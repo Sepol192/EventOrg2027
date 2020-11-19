@@ -187,13 +187,11 @@ C:/Users/afons/source/repos/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/Ev
 C:/Users/afons/source/repos/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.pdb
 C:/Users/afons/source/repos/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.genruntimeconfig.cache
 C:/Users/afons/source/repos/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.csprojAssemblyReference.cache
-/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.dll
-/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.pdb
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/appsettings.json
-/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/app.db
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/mono_crash.11a6748113.0.json
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/EventOrg2027.StaticWebAssets.xml
+/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/app.db
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/EventOrg2027.deps.json
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/EventOrg2027.runtimeconfig.json
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/EventOrg2027.runtimeconfig.dev.json
@@ -253,7 +251,6 @@ C:/Users/afons/source/repos/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/Ev
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/runtimes/win-arm64/native/e_sqlite3.dll
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/e_sqlite3.dll
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/e_sqlite3.dll
-/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.csprojAssemblyReference.cache
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.AssemblyInfoInputs.cache
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.AssemblyInfo.cs
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.csproj.CoreCompileInputs.cache
@@ -280,4 +277,7 @@ C:/Users/afons/source/repos/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/Ev
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.RazorTargetAssemblyInfo.cs
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.Views.pdb
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.csproj.CopyComplete
+/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.dll
+/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.pdb
 /Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.genruntimeconfig.cache
+/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/Debug/netcoreapp3.1/EventOrg2027.csprojAssemblyReference.cache
