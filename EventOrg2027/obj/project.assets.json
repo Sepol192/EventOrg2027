@@ -1593,30 +1593,30 @@
     ]
   },
   "packageFolders": {
-    "/Users/marcelolopes/.nuget/packages/": {}
+    "C:\\Users\\afons\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/EventOrg2027.csproj",
+      "projectUniqueName": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
       "projectName": "EventOrg2027",
-      "projectPath": "/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/EventOrg2027.csproj",
-      "packagesPath": "/Users/marcelolopes/.nuget/packages/",
-      "outputPath": "/Users/marcelolopes/VisualStudio/EventOrg2027/EventOrg2027/obj/",
+      "projectPath": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
+      "packagesPath": "C:\\Users\\afons\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/marcelolopes/.config/NuGet/NuGet.Config"
+        "C:\\Users\\afons\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "http://myget.org/F/xamarinforms-ci/api/v2": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -1628,7 +1628,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -1669,7 +1668,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
