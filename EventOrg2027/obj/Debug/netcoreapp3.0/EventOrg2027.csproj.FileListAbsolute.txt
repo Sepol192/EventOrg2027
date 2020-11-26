@@ -158,3 +158,8 @@ C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Ev
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.dll
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.pdb
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.genruntimeconfig.cache
+C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Create.cshtml.g.cs
+C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Delete.cshtml.g.cs
+C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Details.cshtml.g.cs
+C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Edit.cshtml.g.cs
+C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Index.cshtml.g.cs
