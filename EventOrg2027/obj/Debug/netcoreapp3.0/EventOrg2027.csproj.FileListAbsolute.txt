@@ -333,3 +333,8 @@ C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcorea
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Details.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Edit.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Index.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Create.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Delete.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Details.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Edit.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Index.cshtml.g.cs

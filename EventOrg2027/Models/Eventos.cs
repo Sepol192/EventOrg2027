@@ -20,7 +20,7 @@ namespace EventOrg2027.Models
         [StringLength(100)]
         public string Descricao { get; set; }
 
-        public string HoraInicio { get; set; }
+        public DateTime HoraInicio { get; set; }
 
         public string Lotacao { get; set; } 
 

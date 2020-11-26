@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201124235723_InitialCreate.cs" />
+    <Compile Remove="Migrations\20201124235723_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20201126000254_Inicial.cs" />
+    <Compile Remove="Migrations\20201126000254_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20201126120620_InicialContext.cs" />
+    <Compile Remove="Migrations\20201126120620_InicialContext.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 

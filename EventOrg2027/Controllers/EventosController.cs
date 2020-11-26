@@ -13,11 +13,13 @@ namespace EventOrg2027.Controllers
     public class EventosController : Controller
     {
         private readonly EventOrgDbContext _context;
+        private EventOrgRepository repository;
 
-        public EventosController(EventOrgDbContext context)
+        public EventosController(EventOrgRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
+
 
         // GET: Eventos
         public async Task<IActionResult> Index()
