@@ -4,56 +4,59 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<header class="masthead2">
+                <h1>Eventos</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeEventos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lotacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataRealizacao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeEventos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoraInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lotacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataRealizacao)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.EventosId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EventosId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EventosId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <p>
+                    <a asp-action="Create">Create New</a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NomeEventos)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descricao)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HoraInicio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Lotacao)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DataRealizacao)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NomeEventos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HoraInicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Lotacao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataRealizacao)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.EventosId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.EventosId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.EventosId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+</header>
