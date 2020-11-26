@@ -9,13 +9,9 @@ namespace EventOrg2027.Models
 {
     public class TipoEventos
     {
-        [Column("TipoEventosId")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
+
         public int TipoEventosId { get; set; }
 
-        [Column("NomeTipoEventos")]
         [Required]
         [StringLength(50)]
         public string NomeTipoEventos { get; set; }
