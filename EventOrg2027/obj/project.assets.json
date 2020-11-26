@@ -934,6 +934,15 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
+      "System.Json/4.0.20126.16343": {
+        "type": "package",
+        "compile": {
+          "lib/net40/System.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net40/System.Json.dll": {}
+        }
+      },
       "System.Linq/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3536,6 +3545,19 @@
         "system.io.filesystem.primitives.nuspec"
       ]
     },
+    "System.Json/4.0.20126.16343": {
+      "sha512": "iFfVzUyuvd5YcTw8NcP62mJ0F+JQ2dDLRArxYk+t6JKdb00mW/uaU3JyO1OuXC3RUsB6ITRYN4FCnxff89Hn4g==",
+      "type": "package",
+      "path": "system.json/4.0.20126.16343",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/System.Json.dll",
+        "lib/net40/System.Json.xml",
+        "system.json.4.0.20126.16343.nupkg.sha512",
+        "system.json.nuspec"
+      ]
+    },
     "System.Linq/4.3.0": {
       "sha512": "5DbqIUpsDp0dFftytzuMmc0oeMdQwjcP/EWxsksIz/w1TcFRkZ3yKKz0PqiYFMmEwPSWw+qNVqD7PJ889JzHbw==",
       "type": "package",
@@ -5666,23 +5688,24 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.0.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.0.0",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.0.0"
+      "Microsoft.EntityFrameworkCore.Tools >= 3.0.0",
+      "System.Json >= 4.0.20126.16343"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Marcelo Lopes\\.nuget\\packages\\": {}
+    "C:\\Users\\afons\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Marcelo Lopes\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
+      "projectUniqueName": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
       "projectName": "EventOrg2027",
-      "projectPath": "C:\\Users\\Marcelo Lopes\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
-      "packagesPath": "C:\\Users\\Marcelo Lopes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Marcelo Lopes\\source\\repos\\EventOrg2027\\EventOrg2027\\obj\\",
+      "projectPath": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
+      "packagesPath": "C:\\Users\\afons\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Marcelo Lopes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\afons\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5743,6 +5766,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[3.0.0, )"
+          },
+          "System.Json": {
+            "target": "Package",
+            "version": "[4.0.20126.16343, )"
           }
         },
         "imports": [
@@ -5766,5 +5793,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Json 4.0.20126.16343' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Json",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

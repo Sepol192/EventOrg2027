@@ -9,13 +9,8 @@ namespace EventOrg2027.Models
 {
     public class Localidade
     {
-        [Column("LocalidadeId")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
         public int LocalidadeId { get; set; }
 
-        [Column("NomeLocalidade")]
         [Required]
         [StringLength(50)]
         public string NomeLocalidade { get; set; }

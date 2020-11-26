@@ -23,6 +23,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0"><IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 <PrivateAssets>all</PrivateAssets>
 </PackageReference>
+    <PackageReference Include="System.Json" Version="4.0.20126.16343" />
   </ItemGroup>
 
   <ItemGroup>

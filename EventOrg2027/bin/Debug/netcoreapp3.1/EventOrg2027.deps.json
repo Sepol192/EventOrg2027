@@ -32,6 +32,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "3.0.0",
+          "System.Json": "4.0.20126.16343",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -973,6 +974,17 @@
       "System.IO.FileSystem.Primitives/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Json/4.0.20126.16343": {
+        "runtime": {
+          "lib/net40/System.Json.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.20126.16343"
+          }
+        },
+        "compile": {
+          "lib/net40/System.Json.dll": {}
         }
       },
       "System.Linq/4.3.0": {
@@ -3516,6 +3528,13 @@
       "sha512": "sha512-6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
       "path": "system.io.filesystem.primitives/4.3.0",
       "hashPath": "system.io.filesystem.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.Json/4.0.20126.16343": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iFfVzUyuvd5YcTw8NcP62mJ0F+JQ2dDLRArxYk+t6JKdb00mW/uaU3JyO1OuXC3RUsB6ITRYN4FCnxff89Hn4g==",
+      "path": "system.json/4.0.20126.16343",
+      "hashPath": "system.json.4.0.20126.16343.nupkg.sha512"
     },
     "System.Linq/4.3.0": {
       "type": "package",
