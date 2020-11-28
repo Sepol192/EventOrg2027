@@ -13,18 +13,37 @@ namespace EventOrg2027.Controllers
     public class EventosController : Controller
     {
         private readonly EventOrgDbContext _context;
+        private readonly EventOrgRepository repository;
 
-        public EventosController(EventOrgDbContext context)
+
+        public EventosController(EventOrgRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
-        // GET: Eventos
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Eventos.ToListAsync());
-        }
 
+        // GET: Eventos 
+        public async Task<IActionResult> Index(int page = 1)
+        {
+            var pagination = new PagingInfo
+            {
+                CurrentPage = page,
+                PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
+                TotalItems = repository.Eventos.Count()
+            };
+
+            return View(
+                new EventosListViewModel
+                {
+                    Eventos = repository.Eventos
+                        .OrderBy(p => p.NomeEventos)
+                        .Skip((page - 1) * pagination.PageSize)
+                        .Take(pagination.PageSize),
+                    Pagination = pagination
+                }
+            );
+        }
+        /*
         // GET: Eventos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -149,5 +168,6 @@ namespace EventOrg2027.Controllers
         {
             return _context.Eventos.Any(e => e.EventosId == id);
         }
+    }*/
     }
 }

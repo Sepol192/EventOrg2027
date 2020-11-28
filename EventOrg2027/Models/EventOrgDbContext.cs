@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EventOrg2027.Data
+namespace EventOrg2027.Models
 {
     public class EventOrgDbContext:DbContext
     {

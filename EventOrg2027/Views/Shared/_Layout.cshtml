@@ -27,17 +27,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-action="Sobre" asp-controller="Home">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Eventos" asp-action="Index">Eventos</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Localidades" asp-action="Index">Localidades</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-action="Sobre" asp-controller="Home">Sobre</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
+
     @RenderBody()
+
+
+<footer class="footer2 small text-center text-black-50">
+        Copyright © Your Website 2020
+</footer>
     <!-- Footer-->
-    <footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
+    <!--<footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
     <!-- Bootstrap core JS-->
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <!-- Third party plugin JS-->
@@ -46,4 +56,5 @@
     <script src="~/js/scripts.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>

@@ -1,62 +1,62 @@
-﻿@model IEnumerable<EventOrg2027.Models.Eventos>
+﻿@model EventosListViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista De Eventos";
 }
 
-<header class="masthead2">
-                <h1>Eventos</h1>
+<header class="masthead2 text-center">
+    <h1>@ViewBag.Title </h1>
 
-                <p>
-                    <a asp-action="Create">Create New</a>
-                </p>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.NomeEventos)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Descricao)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.HoraInicio)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Lotacao)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.DataRealizacao)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NomeEventos)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Descricao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HoraInicio)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Lotacao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DataRealizacao)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.EventosId">Edit</a> |
-                                    <a asp-action="Details" asp-route-id="@item.EventosId">Details</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.EventosId">Delete</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+
+    <p>
+        <a asp-action="Create" style="font-size: 1vw">Create New</a>
+    </p>
+    <table class="table">
+
+        
+            @foreach (var p in Model.Eventos)
+
+            {
+
+        <div class="cardeventos ">
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 1.5vw">@p.NomeEventos</h5>
+                <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.7vw">@p.DataRealizacao</h6>
+                <p class="card-text" style="font-size: 0.9vw">@p.Descricao</p>
+                <p><buton style="font-size: 0.8vw">Ver</buton></p>
+            </div>
+        </div>
+
+
+            }
+        </table>
+
+    <nav class="mt-3">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">First</a></li>
+
+            @{
+                int initalPage = Model.Pagination.CurrentPage - PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                if (initalPage < 1) initalPage = 1;
+
+                int finalPage = Model.Pagination.CurrentPage + PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                if (finalPage > Model.Pagination.TotalPages) finalPage = Model.Pagination.TotalPages;
+            }
+
+            @for (int p = initalPage; p <= finalPage; p++)
+            {
+                if (p == Model.Pagination.CurrentPage)
+                {
+                    <li class="page-item active"><a class="page-link" href="#">@p</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p">@p</a></li>
+                }
+            }
+
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Last</a></li>
+        </ul>
+    </nav>
 </header>
+
