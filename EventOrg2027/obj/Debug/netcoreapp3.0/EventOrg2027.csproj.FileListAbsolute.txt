@@ -293,7 +293,6 @@ C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\bin\Debug\netcorea
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\bin\Debug\netcoreapp3.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csprojAssemblyReference.cache
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.AssemblyInfoInputs.cache
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.AssemblyInfo.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csproj.CoreCompileInputs.cache
@@ -338,3 +337,4 @@ C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Ra
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Details.cshtml.g.cs
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Edit.cshtml.g.cs
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Localidades\Index.cshtml.g.cs
+C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csprojAssemblyReference.cache
