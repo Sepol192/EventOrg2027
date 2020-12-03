@@ -13,16 +13,34 @@ namespace EventOrg2027.Controllers
     public class LocalidadesController : Controller
     {
         private readonly EventOrgDbContext _context;
+        private readonly EventOrgRepository repository;
 
-        public LocalidadesController(EventOrgDbContext context)
+
+        public LocalidadesController(EventOrgRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
         // GET: Localidades
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            return View(await _context.Localidade.ToListAsync());
+            var pagination = new PagingInfo
+            {
+                CurrentPage = page,
+                PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
+                TotalItems = repository.Localidades.Count()
+            };
+
+            return View(
+                new LocalidadesListViewModel
+                {
+                    Localidades = repository.Localidades
+                        .OrderBy(p => p.NomeLocalidade)
+                        .Skip((page - 1) * pagination.PageSize)
+                        .Take(pagination.PageSize),
+                    Pagination = pagination
+                }
+            );
         }
 
         // GET: Localidades/Details/5

@@ -15,12 +15,17 @@ namespace EventOrg2027.Models
 
         private static void PopulateEvents(EventOrgDbContext dbContext)
         {
-            if (dbContext.Eventos.Any())
+            /*if (dbContext.Eventos.Any())
+            {
+                return;
+            }*/
+
+            if (dbContext.Localidade.Any())
             {
                 return;
             }
-            
-            dbContext.Eventos.AddRange(
+
+            /*dbContext.Eventos.AddRange(
                 new Eventos { 
                     NomeEventos = "Concerto",
                     Descricao="Concerto José Cid na Guarda com controlo de pessoas",
@@ -79,7 +84,22 @@ namespace EventOrg2027.Models
 
                 }
 
-            );
+            );*/
+
+            dbContext.Localidade.AddRange(
+                new Localidade
+                {
+                    NomeLocalidade = "Guarda",
+                },
+                new Localidade
+                {
+                    NomeLocalidade = "Celorico",
+                },
+                new Localidade
+                {
+                    NomeLocalidade = "Seia",
+                }
+                );
 
 
             dbContext.SaveChanges();

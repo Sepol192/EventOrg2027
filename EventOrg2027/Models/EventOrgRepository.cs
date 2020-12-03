@@ -7,6 +7,7 @@ namespace EventOrg2027.Models
 {
     public interface EventOrgRepository
     { 
-        public IEnumerable<Eventos> Eventos { get;  } 
+        public IEnumerable<Eventos> Eventos { get;  }
+        public IEnumerable<Localidade> Localidades { get; }
     }
 }
