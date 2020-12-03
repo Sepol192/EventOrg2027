@@ -9,5 +9,7 @@ namespace EventOrg2027.Models
     { 
         public IEnumerable<Eventos> Eventos { get;  }
         public IEnumerable<Localidade> Localidades { get; }
+
+        public IEnumerable<TipoEventos> TipoEventos { get; }
     }
 }
