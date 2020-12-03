@@ -20,7 +20,12 @@ namespace EventOrg2027.Models
                 return;
             }*/
 
-            if (dbContext.Localidade.Any())
+          /*  if (dbContext.Localidade.Any())
+            {
+                return;
+            }*/
+
+            if (dbContext.TiposEventos.Any())
             {
                 return;
             }
@@ -85,7 +90,7 @@ namespace EventOrg2027.Models
                 }
 
             );*/
-
+            /*
             dbContext.Localidade.AddRange(
                 new Localidade
                 {
@@ -99,9 +104,22 @@ namespace EventOrg2027.Models
                 {
                     NomeLocalidade = "Seia",
                 }
-                );
+                );*/
 
-
+                 dbContext.TiposEventos.AddRange(
+              new TipoEventos
+          {
+                NomeTipoEventos = "Música",
+             },
+             new TipoEventos
+             {
+                NomeTipoEventos = "Concerto",
+              },
+                  new TipoEventos
+             {
+                    NomeTipoEventos = "Arte",
+           }
+          );
             dbContext.SaveChanges();
             
            /* for(int i = 0; i < 100; i++)
