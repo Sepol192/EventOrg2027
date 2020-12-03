@@ -13,8 +13,10 @@ namespace EventOrg2027.Models
             PopulateEvents(dbContext);
         }
 
+
         private static void PopulateEvents(EventOrgDbContext dbContext)
         {
+            /*
             if (dbContext.Eventos.Any())
             {
                 return;
@@ -80,24 +82,45 @@ namespace EventOrg2027.Models
                 }
 
             );
+            dbContext.SaveChanges();
+            */
+
+            if (dbContext.TiposEventos.Any())
+            {
+                return;
+            }
+
+            dbContext.TiposEventos.AddRange(
+                new TipoEventos
+                {
+                    NomeTipoEventos = "Música"
+                },
+                new TipoEventos
+                {
+                    NomeTipoEventos = "Concerto"
+                }
+        );
 
 
             dbContext.SaveChanges();
-            
-           /* for(int i = 0; i < 100; i++)
-            {
-                dbContext.Eventos.AddRange(
-                new Eventos
-                {
-                    NomeEventos = "Dança contemporânea",
-                    Descricao = "Que ou quem é do mesmo tempo ou da mesma época contemporâneo",
-                    DataRealizacao = new DateTime(2020, 11, 1, 19, 0, 0),
-                    Lotacao = "50"
-                }
-                );
 
-                dbContext.SaveChanges();
-            }*/
+            /* for(int i = 0; i < 100; i++)
+             {
+                 dbContext.Eventos.AddRange(
+                 new Eventos
+                 {
+                     NomeEventos = "Dança contemporânea",
+                     Descricao = "Que ou quem é do mesmo tempo ou da mesma época contemporâneo",
+                     DataRealizacao = new DateTime(2020, 11, 1, 19, 0, 0),
+                     Lotacao = "50"
+                 }
+                 );
+
+                 dbContext.SaveChanges();
+             }*/
+
         }
+
+
     }
 }
