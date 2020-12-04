@@ -343,3 +343,8 @@ C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Ra
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\TipoEventos\Details.cshtml.g.cs
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\TipoEventos\Edit.cshtml.g.cs
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\TipoEventos\Index.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Organizadors\Create.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Organizadors\Delete.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Organizadors\Details.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Organizadors\Edit.cshtml.g.cs
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Organizadors\Index.cshtml.g.cs
