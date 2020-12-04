@@ -5,46 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EventOrg2027.Data;
 using EventOrg2027.Models;
 
 namespace EventOrg2027.Controllers
 {
-    public class EventosController : Controller
+    public class OrganizadorsController : Controller
     {
         private readonly EventOrgDbContext _context;
-        private readonly EventOrgRepository repository;
 
-
-        public EventosController(EventOrgRepository repository)
+        public OrganizadorsController(EventOrgDbContext context)
         {
-            this.repository = repository;
+            _context = context;
         }
 
-
-        // GET: Eventos 
-        public async Task<IActionResult> Index(int page = 1)
+        // GET: Organizadors
+        public async Task<IActionResult> Index()
         {
-            var pagination = new PagingInfo
-            {
-                CurrentPage = page,
-                PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
-                TotalItems = repository.Eventos.Count()
-            };
-
-            return View(
-                new EventosListViewModel
-                {
-                    Eventos = repository.Eventos
-                        .OrderBy(p => p.NomeEventos)
-                        .Skip((page - 1) * pagination.PageSize)
-                        .Take(pagination.PageSize),
-                    Pagination = pagination
-                }
-            );
+            return View(await _context.Organizador.ToListAsync());
         }
-        
-        // GET: Eventos/Details/5
+
+        // GET: Organizadors/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,39 +32,39 @@ namespace EventOrg2027.Controllers
                 return NotFound();
             }
 
-            var eventos = await _context.Eventos
-                .FirstOrDefaultAsync(m => m.EventosId == id);
-            if (eventos == null)
+            var organizador = await _context.Organizador
+                .FirstOrDefaultAsync(m => m.OrganizadorId == id);
+            if (organizador == null)
             {
                 return NotFound();
             }
 
-            return View(eventos);
+            return View(organizador);
         }
 
-        // GET: Eventos/Create
+        // GET: Organizadors/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Eventos/Create
+        // POST: Organizadors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventosId,NomeEventos,Descricao,HoraInicio,Lotacao,DataRealizacao")] Eventos eventos)
+        public async Task<IActionResult> Create([Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento")] Organizador organizador)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(eventos);
+                _context.Add(organizador);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(eventos);
+            return View(organizador);
         }
 
-        // GET: Eventos/Edit/5
+        // GET: Organizadors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,22 +72,22 @@ namespace EventOrg2027.Controllers
                 return NotFound();
             }
 
-            var eventos = await _context.Eventos.FindAsync(id);
-            if (eventos == null)
+            var organizador = await _context.Organizador.FindAsync(id);
+            if (organizador == null)
             {
                 return NotFound();
             }
-            return View(eventos);
+            return View(organizador);
         }
 
-        // POST: Eventos/Edit/5
+        // POST: Organizadors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventosId,NomeEventos,Descricao,HoraInicio,Lotacao,DataRealizacao")] Eventos eventos)
+        public async Task<IActionResult> Edit(int id, [Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento")] Organizador organizador)
         {
-            if (id != eventos.EventosId)
+            if (id != organizador.OrganizadorId)
             {
                 return NotFound();
             }
@@ -116,12 +96,12 @@ namespace EventOrg2027.Controllers
             {
                 try
                 {
-                    _context.Update(eventos);
+                    _context.Update(organizador);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EventosExists(eventos.EventosId))
+                    if (!OrganizadorExists(organizador.OrganizadorId))
                     {
                         return NotFound();
                     }
@@ -132,10 +112,10 @@ namespace EventOrg2027.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(eventos);
+            return View(organizador);
         }
 
-        // GET: Eventos/Delete/5
+        // GET: Organizadors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,30 +123,30 @@ namespace EventOrg2027.Controllers
                 return NotFound();
             }
 
-            var eventos = await _context.Eventos
-                .FirstOrDefaultAsync(m => m.EventosId == id);
-            if (eventos == null)
+            var organizador = await _context.Organizador
+                .FirstOrDefaultAsync(m => m.OrganizadorId == id);
+            if (organizador == null)
             {
                 return NotFound();
             }
 
-            return View(eventos);
+            return View(organizador);
         }
 
-        // POST: Eventos/Delete/5
+        // POST: Organizadors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var eventos = await _context.Eventos.FindAsync(id);
-            _context.Eventos.Remove(eventos);
+            var organizador = await _context.Organizador.FindAsync(id);
+            _context.Organizador.Remove(organizador);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EventosExists(int id)
+        private bool OrganizadorExists(int id)
         {
-            return _context.Eventos.Any(e => e.EventosId == id);
+            return _context.Organizador.Any(e => e.OrganizadorId == id);
         }
     }
 }
