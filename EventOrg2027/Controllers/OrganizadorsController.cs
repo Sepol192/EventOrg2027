@@ -53,7 +53,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento")] Organizador organizador)
+        public async Task<IActionResult> Create([Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento,EmailAddress")] Organizador organizador)
         {
             if (ModelState.IsValid)
             {

@@ -1,47 +1,56 @@
 ﻿@model IEnumerable<EventOrg2027.Models.Organizador>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Organizadores";
 }
 
-<h1>Index</h1>
+<header class="masthead2 text-center">
+    <h1>@ViewBag.Title </h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeOrganizador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contacto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataNascimento)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeOrganizador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contacto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNascimento)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrganizadorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrganizadorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrganizadorId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeOrganizador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contacto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeOrganizador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contacto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => item.EmailAddress)
+                    </th>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.OrganizadorId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.OrganizadorId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.OrganizadorId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+ </header>

@@ -42,7 +42,7 @@ namespace EventOrg2027.Controllers
                 }
             );
         }
-
+        
         // GET: TipoEventos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -74,7 +74,7 @@ namespace EventOrg2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TipoEventosId,NomeTipoEventos")] TipoEventos tipoEventos)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
                 _context.Add(tipoEventos);
                 await _context.SaveChangesAsync();
@@ -168,4 +168,5 @@ namespace EventOrg2027.Controllers
             return _context.TiposEventos.Any(e => e.TipoEventosId == id);
         }
     }
-}
+ }
+
