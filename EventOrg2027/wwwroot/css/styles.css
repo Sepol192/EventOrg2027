@@ -601,8 +601,8 @@ pre code {
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
 }
 
 .no-gutters {
@@ -4419,35 +4419,30 @@ input[type=button].btn-block {
   color: #fff;
 }
 
-.pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 div.cardeventos {
-    width: 290px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardeventos-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* divs centradas na horizontal*/
+    align-items: center;
 }
 
 .cardeventos {
     display: grid;
-    height: 25vw;
-    width: 50vh;
-    float: left;
-    text-align: center;
-    /*margin: 20px 10px 40px 80px;*/
-    margin-left:10%;
-    margin-top:3%;
-    margin-bottom:3%;
-    margin-right:2%;
+    height: 28vw;
+    width: 40vh;
+    margin: 10px 50px 10px 50px;
     padding: 10px 5px 10px 5px;
-    align-items: center;
-    background-color: #fff;
+    align-content: center;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
 }
+
     .cardeventos buton {
         border: none;
         outline: 0;
@@ -4459,7 +4454,6 @@ div.cardeventos {
         width: 100%;
         font-size: 18px;
     }
-
 
 
 .card {
@@ -4707,12 +4701,7 @@ div.cardeventos {
   color: #6c757d;
 }
 
-.pagination {
-  display: flex;
-  padding-left: 0;
-  list-style: none;
-  border-radius: 0.25rem;
-}
+
 
 .page-link {
   position: relative;
@@ -4760,32 +4749,15 @@ div.cardeventos {
   border-color: #dee2e6;
 }
 
-.pagination-lg .page-link {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-.pagination-lg .page-item:first-child .page-link {
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
-}
-.pagination-lg .page-item:last-child .page-link {
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
-}
-
-.pagination-sm .page-link {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-.pagination-sm .page-item:first-child .page-link {
-  border-top-left-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
-}
-.pagination-sm .page-item:last-child .page-link {
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    flex-wrap: wrap;
+    justify-content: center; /* divs centradas na horizontal*/
+    align-items: center;
 }
 
 .badge {
@@ -7743,7 +7715,7 @@ button.bg-black:focus {
 .m-3 {
   margin: 1rem !important;
 }
-
+ 
 .mt-3,
 .my-3 {
   margin-top: 1rem !important;

@@ -16,7 +16,7 @@ namespace EventOrg2027.Models
 
         public IEnumerable<Eventos> Eventos => dbContext.Eventos;
         public IEnumerable<Localidade> Localidades => dbContext.Localidade;
-
+        public IEnumerable<Organizador> Organizadors => dbContext.Organizador;
         public IEnumerable<TipoEventos> TipoEventos => dbContext.TiposEventos;
 
     }

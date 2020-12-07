@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventOrg2027.Migrations
 {
     [DbContext(typeof(EventOrgDbContext))]
-    [Migration("20201127001021_initial")]
-    partial class initial
+    [Migration("20201207035257_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,29 +33,37 @@ namespace EventOrg2027.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("HoraInicio")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("HoraRealizacao")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int?>("LocalidadeId")
+                    b.Property<int>("LocalidadeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Lotacao")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Lotacao")
+                        .HasColumnType("int");
 
                     b.Property<string>("NomeEventos")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
-                    b.Property<int?>("TipoEventosId")
+                    b.Property<int?>("OrganizadorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrganizadoresId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoEventosId")
                         .HasColumnType("int");
 
                     b.HasKey("EventosId");
 
                     b.HasIndex("LocalidadeId");
+
+                    b.HasIndex("OrganizadorId");
 
                     b.HasIndex("TipoEventosId");
 
@@ -69,14 +77,50 @@ namespace EventOrg2027.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
                     b.Property<string>("NomeLocalidade")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("Populacao")
+                        .HasColumnType("int");
+
                     b.HasKey("LocalidadeId");
 
                     b.ToTable("Localidade");
+                });
+
+            modelBuilder.Entity("EventOrg2027.Models.Organizador", b =>
+                {
+                    b.Property<int>("OrganizadorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contacto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeOrganizador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("OrganizadorId");
+
+                    b.ToTable("Organizador");
                 });
 
             modelBuilder.Entity("EventOrg2027.Models.TipoEventos", b =>
@@ -98,13 +142,21 @@ namespace EventOrg2027.Migrations
 
             modelBuilder.Entity("EventOrg2027.Models.Eventos", b =>
                 {
-                    b.HasOne("EventOrg2027.Models.Localidade", "localidade")
+                    b.HasOne("EventOrg2027.Models.Localidade", "Localidade")
                         .WithMany()
-                        .HasForeignKey("LocalidadeId");
+                        .HasForeignKey("LocalidadeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("EventOrg2027.Models.TipoEventos", "tipoEventos")
+                    b.HasOne("EventOrg2027.Models.Organizador", "Organizador")
                         .WithMany()
-                        .HasForeignKey("TipoEventosId");
+                        .HasForeignKey("OrganizadorId");
+
+                    b.HasOne("EventOrg2027.Models.TipoEventos", "TipoEventos")
+                        .WithMany()
+                        .HasForeignKey("TipoEventosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

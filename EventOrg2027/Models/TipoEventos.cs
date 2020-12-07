@@ -12,8 +12,8 @@ namespace EventOrg2027.Models
 
         public int TipoEventosId { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Por favor, introduza o Nome")]
+        [StringLength(50, ErrorMessage = "O nome é muito extenso")]
         public string NomeTipoEventos { get; set; }
     }
 }

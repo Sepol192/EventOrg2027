@@ -13,6 +13,6 @@ namespace EventOrg2027.Models
         public DbSet<Localidade> Localidade { get; set; }
         public DbSet<TipoEventos> TiposEventos { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
-        public DbSet<EventOrg2027.Models.Organizador> Organizador { get; set; }
+        public DbSet<Organizador> Organizador { get; set; }
     }
 }

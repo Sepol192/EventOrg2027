@@ -10,7 +10,7 @@ namespace EventOrg2027.Models
     { 
         public int OrganizadorId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Por favor, introduza o Nome do Organizador")]
         [StringLength(50)]
         public string NomeOrganizador { get; set; }
 
@@ -23,10 +23,9 @@ namespace EventOrg2027.Models
         [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
 
-
+        [Required(ErrorMessage = "Por favor, introduza o Email")]
         [DataType(DataType.EmailAddress)]
-        public string EmailAddress;
+        public string EmailAddress { get; set; }
 
-        public Eventos eventos { get; set; }
     }
 }
