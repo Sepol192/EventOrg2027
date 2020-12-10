@@ -181,8 +181,8 @@ namespace EventOrg2027.Models
                 }
                 );
             dbContext.SaveChanges();*/
+            /*
             
-
                 dbContext.Eventos.AddRange(
                 new Eventos
                 {
@@ -200,8 +200,8 @@ namespace EventOrg2027.Models
 
                 dbContext.SaveChanges();
             
+        }*/
+
         }
-
-
     }
 }

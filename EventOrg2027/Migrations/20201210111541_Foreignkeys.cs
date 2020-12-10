@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EventOrg2027.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Foreignkeys : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,8 +64,7 @@ namespace EventOrg2027.Migrations
                     HoraRealizacao = table.Column<DateTime>(nullable: false),
                     LocalidadeId = table.Column<int>(nullable: false),
                     TipoEventosId = table.Column<int>(nullable: false),
-                    OrganizadoresId = table.Column<int>(nullable: false),
-                    OrganizadorId = table.Column<int>(nullable: true)
+                    OrganizadorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,7 +80,7 @@ namespace EventOrg2027.Migrations
                         column: x => x.OrganizadorId,
                         principalTable: "Organizador",
                         principalColumn: "OrganizadorId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Eventos_TiposEventos_TipoEventosId",
                         column: x => x.TipoEventosId,

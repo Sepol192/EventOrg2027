@@ -39,6 +39,24 @@
                 <span asp-validation-for="HoraRealizacao" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="LocalidadeId" class="control-label">Localidade</label>
+                <select asp-for="LocalidadeId" class="form-control" asp-items="ViewBag.LocalidadeId">
+                    <option value="">-- Localidade --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoEventosId" class="control-label">Tipo de Eventos</label>
+                <select asp-for="TipoEventosId" class="form-control" asp-items="ViewBag.TipoEventosId">
+                    <option value="">-- Tipo de Evento --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrganizadorId" class="control-label">Organizador</label>
+                <select asp-for="OrganizadorId" class="form-control" asp-items="ViewBag.OrganizadorId">
+                    <option value="">-- Organizador --</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <p></p>
                 <p><a asp-action="Index" class="btn btn-dark">Back to List</a></p>

@@ -30,16 +30,13 @@ namespace EventOrg2027.Models
         [DataType(DataType.Time)]
         public DateTime HoraRealizacao { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza a localidade")]
         public int LocalidadeId { get; set; }
         public Localidade Localidade { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza o tipo de evento")]
         public int TipoEventosId { get; set; }
         public TipoEventos TipoEventos { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza o organizador")]
-        public int OrganizadoresId { get; set; }
+        public int OrganizadorId { get; set; } 
         public Organizador Organizador { get; set; }
 
 

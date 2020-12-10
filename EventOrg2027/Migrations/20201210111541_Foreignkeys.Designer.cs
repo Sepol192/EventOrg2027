@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventOrg2027.Migrations
 {
     [DbContext(typeof(EventOrgDbContext))]
-    [Migration("20201207035257_Inicial")]
-    partial class Inicial
+    [Migration("20201210111541_Foreignkeys")]
+    partial class Foreignkeys
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,10 +50,7 @@ namespace EventOrg2027.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("OrganizadorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrganizadoresId")
+                    b.Property<int>("OrganizadorId")
                         .HasColumnType("int");
 
                     b.Property<int>("TipoEventosId")
@@ -150,7 +147,9 @@ namespace EventOrg2027.Migrations
 
                     b.HasOne("EventOrg2027.Models.Organizador", "Organizador")
                         .WithMany()
-                        .HasForeignKey("OrganizadorId");
+                        .HasForeignKey("OrganizadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EventOrg2027.Models.TipoEventos", "TipoEventos")
                         .WithMany()

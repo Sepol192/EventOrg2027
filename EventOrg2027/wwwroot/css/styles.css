@@ -4420,6 +4420,7 @@ input[type=button].btn-block {
 }
 
 
+
 div.cardeventos {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -4443,7 +4444,7 @@ div.cardeventos {
     border-radius: 0.25rem;
 }
 
-    .cardeventos buton {
+    .cardeventos button {
         border: none;
         outline: 0;
         padding: 12px;

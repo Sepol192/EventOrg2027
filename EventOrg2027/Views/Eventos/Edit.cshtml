@@ -39,6 +39,21 @@
                 <span asp-validation-for="HoraRealizacao" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="LocalidadeId" class="control-label"></label>
+                <select asp-for="LocalidadeId" class="form-control" asp-items="ViewBag.LocalidadeId"></select>
+                <span asp-validation-for="LocalidadeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoEventosId" class="control-label"></label>
+                <select asp-for="TipoEventosId" class="form-control" asp-items="ViewBag.TipoEventosId"></select>
+                <span asp-validation-for="TipoEventosId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrganizadorId" class="control-label"></label>
+                <select asp-for="OrganizadorId" class="form-control" asp-items="ViewBag.OrganizadorId"></select>
+                <span asp-validation-for="OrganizadorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
