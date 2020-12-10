@@ -40,6 +40,24 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.HoraRealizacao)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Localidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Localidade.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoEventos)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TipoEventos.NomeTipoEventos)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Organizador)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Organizador.NomeOrganizador)
+        </dd>
     </dl>
 </div>
 <div>

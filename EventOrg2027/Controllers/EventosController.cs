@@ -13,12 +13,10 @@ namespace EventOrg2027.Controllers
     public class EventosController : Controller
     {
         private readonly EventOrgDbContext _context;
-        private readonly EventOrgRepository repository;
 
-
-        public EventosController(EventOrgRepository repository)
+        public EventosController(EventOrgDbContext _context)
         {
-            this.repository = repository;
+            this._context = _context;
         }
 
 
@@ -26,19 +24,22 @@ namespace EventOrg2027.Controllers
         public async Task<IActionResult> Index(int page = 1)
         {
             var pagination = new PagingInfo
+
             {
                 CurrentPage = page,
                 PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
-                TotalItems = repository.Eventos.Count()
+                TotalItems = _context.Eventos.Count()
             };
-
+            
             return View(
+
                 new EventosListViewModel
                 {
-                    Eventos = repository.Eventos
-                        .OrderBy(p => p.NomeEventos)
-                        .Skip((page - 1) * pagination.PageSize)
-                        .Take(pagination.PageSize),
+                    Eventos = _context.Eventos
+                    .OrderBy(p => p.NomeEventos)
+                    .Skip((page - 1) * pagination.PageSize)
+                    .Take(pagination.PageSize)
+                    .Include(e => e.Localidade).Include(e => e.Organizador).Include(e => e.TipoEventos),
                     Pagination = pagination
                 }
             );
@@ -53,6 +54,9 @@ namespace EventOrg2027.Controllers
             }
 
             var eventos = await _context.Eventos
+                .Include(e => e.Localidade)
+                .Include(e => e.Organizador)
+                .Include(e => e.TipoEventos)
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (eventos == null)
             {
@@ -65,6 +69,9 @@ namespace EventOrg2027.Controllers
         // GET: Eventos/Create
         public IActionResult Create()
         {
+            ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade");
+            ViewData["OrganizadorId"] = new SelectList(_context.Organizador, "OrganizadorId", "NomeOrganizador");
+            ViewData["TipoEventosId"] = new SelectList(_context.TiposEventos, "TipoEventosId", "NomeTipoEventos");
             return View();
         }
 
@@ -73,7 +80,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventosId,NomeEventos,Descricao,HoraInicio,Lotacao,DataRealizacao")] Eventos eventos)
+        public async Task<IActionResult> Create([Bind("EventosId,NomeEventos,Descricao,Lotacao,DataRealizacao,HoraRealizacao,LocalidadeId,TipoEventosId,OrganizadorId")] Eventos eventos)
         {
             if (ModelState.IsValid)
             {
@@ -81,6 +88,9 @@ namespace EventOrg2027.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade", eventos.LocalidadeId);
+            ViewData["OrganizadorId"] = new SelectList(_context.Organizador, "OrganizadorId", "NomeOrganizador", eventos.OrganizadorId);
+            ViewData["TipoEventosId"] = new SelectList(_context.TiposEventos, "TipoEventosId", "NomeTipoEventos", eventos.TipoEventosId);
             return View(eventos);
         }
 
@@ -97,6 +107,9 @@ namespace EventOrg2027.Controllers
             {
                 return NotFound();
             }
+            ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade", eventos.LocalidadeId);
+            ViewData["OrganizadorId"] = new SelectList(_context.Organizador, "OrganizadorId", "NomeOrganizador", eventos.OrganizadorId);
+            ViewData["TipoEventosId"] = new SelectList(_context.TiposEventos, "TipoEventosId", "NomeTipoEventos", eventos.TipoEventosId);
             return View(eventos);
         }
 
@@ -105,7 +118,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventosId,NomeEventos,Descricao,HoraInicio,Lotacao,DataRealizacao")] Eventos eventos)
+        public async Task<IActionResult> Edit(int id, [Bind("EventosId,NomeEventos,Descricao,Lotacao,DataRealizacao,HoraRealizacao,LocalidadeId,TipoEventosId,OrganizadorId")] Eventos eventos)
         {
             if (id != eventos.EventosId)
             {
@@ -132,6 +145,9 @@ namespace EventOrg2027.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade", eventos.LocalidadeId);
+            ViewData["OrganizadorId"] = new SelectList(_context.Organizador, "OrganizadorId", "NomeOrganizador", eventos.OrganizadorId);
+            ViewData["TipoEventosId"] = new SelectList(_context.TiposEventos, "TipoEventosId", "NomeTipoEventos", eventos.TipoEventosId);
             return View(eventos);
         }
 
@@ -144,6 +160,9 @@ namespace EventOrg2027.Controllers
             }
 
             var eventos = await _context.Eventos
+                .Include(e => e.Localidade)
+                .Include(e => e.Organizador)
+                .Include(e => e.TipoEventos)
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (eventos == null)
             {
