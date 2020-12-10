@@ -12,12 +12,12 @@ namespace EventOrg2027.Controllers
     public class TipoEventosController : Controller
     {
         private readonly EventOrgDbContext _context;
-        private readonly EventOrgRepository repository;
+        
 
 
-        public TipoEventosController(EventOrgRepository repository)
+        public TipoEventosController(EventOrgDbContext context)
         {
-            this.repository = repository;
+            _context = context;
         }
 
 
@@ -28,13 +28,13 @@ namespace EventOrg2027.Controllers
             {
                 CurrentPage = page,
                 PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
-                TotalItems = repository.TipoEventos.Count()
+                TotalItems = _context.TiposEventos.Count()
             };
 
             return View(
                 new TipoEventoListViewModel
                 {
-                    TipoEventos = repository.TipoEventos
+                    TipoEventos = _context.TiposEventos
                         .OrderBy(p => p.NomeTipoEventos)
                         .Skip((page - 1) * pagination.PageSize)
                         .Take(pagination.PageSize),
