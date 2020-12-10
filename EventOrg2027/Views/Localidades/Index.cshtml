@@ -10,7 +10,7 @@
 
 
     <p>
-        <a asp-action="Create" style="font-size: 1vw">Create New</a>
+        <a asp-action="Create" style="font-size: 1vw">Criar Novo</a>
     </p>
 
         <div class="cardeventos-body">
@@ -23,9 +23,9 @@
                         <h5 class="card-title" style="font-size: 1.5vw">@p.NomeLocalidade</h5>
                         <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.7vw">População: @p.Populacao</h6>
                         <p class="card-text" style="font-size: 0.9vw">@p.Descricao</p>
-                        <a asp-action="Edit" text-color="white" asp-route-id="@p.LocalidadeId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@p.LocalidadeId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@p.LocalidadeId">Delete</a>
+                        <a asp-action="Edit" text-color="white" asp-route-id="@p.LocalidadeId">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@p.LocalidadeId">Detalhes</a> |
+                        <a asp-action="Delete" asp-route-id="@p.LocalidadeId">Apagar</a>
                     </div>
                 </div>
                 }
@@ -33,7 +33,7 @@
 
     <nav class="mt-4">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">First</a></li>
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">Primeira</a></li>
 
             @{ int initalPage = Model.Pagination.CurrentPage - PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
                             if (initalPage < 1) initalPage = 1;
@@ -51,7 +51,7 @@
                     <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p">@p</a></li>                }
             }
 
-            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Last</a></li>
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Ultima</a></li>
         </ul>
     </nav>
 </header>
