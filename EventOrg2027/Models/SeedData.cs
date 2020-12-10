@@ -15,25 +15,25 @@ namespace EventOrg2027.Models
 
         private static void PopulateEvents(EventOrgDbContext dbContext)
         {
-            if (dbContext.Eventos.Any())
+            /*if (dbContext.Eventos.Any())
             {
                 return;
             }
-            /*
+            
             if (dbContext.Localidade.Any())
             {
                 return;
-            }*/
-            /*
+            }
+            
               if (dbContext.TiposEventos.Any())
               {
                   return;
               }
-            /*
+            
               if (dbContext.Organizador.Any())
               {
                   return;
-              }
+              }*/
 
             /*dbContext.Eventos.AddRange(
                 new Eventos { 
@@ -109,9 +109,9 @@ namespace EventOrg2027.Models
                 {
                     NomeLocalidade = "Seia",
                 }
-                );*/
-            /*
-                 dbContext.TiposEventos.AddRange(
+                );
+
+            dbContext.TiposEventos.AddRange(
               new TipoEventos
           {
                 NomeTipoEventos = "Música",
@@ -125,7 +125,7 @@ namespace EventOrg2027.Models
                     NomeTipoEventos = "Arte",
            }
           );
-            dbContext.SaveChanges();
+            dbContext.SaveChanges();*/
             /*
             for(int i = 0; i < 100; i++)
             {
@@ -145,8 +145,8 @@ namespace EventOrg2027.Models
                 );
 
                 dbContext.SaveChanges();
-            }*/
-            /*
+            }
+            
             dbContext.Organizador.AddRange(
             new Organizador
             {
@@ -158,9 +158,9 @@ namespace EventOrg2027.Models
 );
 
             dbContext.SaveChanges();
-            */
-            /*
-            dbContext.Localidade.AddRange(
+            
+
+            /*dbContext.Localidade.AddRange(
                 new Localidade
                 {
                     NomeLocalidade = "Guarda",
@@ -181,25 +181,25 @@ namespace EventOrg2027.Models
                 }
                 );
             dbContext.SaveChanges();*/
-            
 
-                dbContext.Eventos.AddRange(
-                new Eventos
-                {
-                    NomeEventos = "Dança contemporânea",
-                    Descricao = "Que ou quem é do mesmo tempo ou da mesma época contemporâneo",
-                    DataRealizacao = new DateTime(2020, 11, 1),
-                    HoraRealizacao = new DateTime(7),
-                    Lotacao = 50,
-                    LocalidadeId = 1,
-                    OrganizadoresId = 1,
-                    TipoEventosId = 1,
 
-                }
-                );
+            /*dbContext.Eventos.AddRange(
+            new Eventos
+            {
+                NomeEventos = "Dança contemporânea",
+                Descricao = "Que ou quem é do mesmo tempo ou da mesma época contemporâneo",
+                DataRealizacao = new DateTime(2020, 11, 1),
+                HoraRealizacao = new DateTime(7),
+                Lotacao = 50,
+                LocalidadeId = 1,
+                OrganizadoresId = 1,
+                TipoEventosId = 1,
 
-                dbContext.SaveChanges();
-            
+            }
+            );*/
+
+            // dbContext.SaveChanges();
+
         }
 
 
