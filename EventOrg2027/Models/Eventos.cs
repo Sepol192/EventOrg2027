@@ -39,7 +39,7 @@ namespace EventOrg2027.Models
         public TipoEventos TipoEventos { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza o organizador")]
-        public int OrganizadoresId { get; set; }
+        public int OrganizadorId { get; set; }
         public Organizador Organizador { get; set; }
 
 

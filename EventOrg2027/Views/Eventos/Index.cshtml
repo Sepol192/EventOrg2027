@@ -23,6 +23,8 @@
                         <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.7vw">@p.DataRealizacao</h6>
                         <p class="card-text" style="font-size: 0.9vw">@p.Descricao</p>
                         <p><buton style="font-size: 0.8vw">Ver</buton></p>
+                        <a asp-action="Edit" asp-route-id="@p.EventosId">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@p.EventosId">Eliminar</a>
                     </div>
                 </div>
 
