@@ -20,25 +20,25 @@ namespace EventOrg2027.Models
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza a Lotação")]
+        [RegularExpression(@"^[1-9]\d*$")]
         public int Lotacao { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza a Data de Realização")]
+   //     [Required(ErrorMessage = "Por favor, introduza a Data de Realização")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DataRealizacao { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza a Hora de Realização")]
+   //     [Required(ErrorMessage = "Por favor, introduza a Hora de Realização")]
         [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
         public DateTime HoraRealizacao { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza a localidade")]
         public int LocalidadeId { get; set; }
         public Localidade Localidade { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza o tipo de evento")]
         public int TipoEventosId { get; set; }
         public TipoEventos TipoEventos { get; set; }
 
-        [Required(ErrorMessage = "Por favor, introduza o organizador")]
         public int OrganizadorId { get; set; }
         public Organizador Organizador { get; set; }
 

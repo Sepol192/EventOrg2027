@@ -375,6 +375,7 @@ h2, .h2 {
 
 h3, .h3 {
   font-size: 1.75rem;
+  margin:20px;
 }
 
 h4, .h4 {
@@ -382,7 +383,8 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
+    margin: 20px;
 }
 
 h6, .h6 {
@@ -4417,6 +4419,11 @@ input[type=button].btn-block {
 }
 .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
   color: #fff;
+}
+
+.nav-link:hover {
+   / background-color: black;
+    color: white;
 }
 
 
@@ -10174,14 +10181,16 @@ body {
   font-weight: 700;
   padding: 0.9rem 0;
 }
-#mainNav .navbar-nav .nav-item:hover {
-  color: black;
-  outline: none;
-  background-color: white;
-}
+    #mainNav .navbar-nav .nav-item:hover {
+        color: black;
+        outline: none;
+        height: 10px;
+        padding: 1px;
+        background-color: #64a19d;
+    }
     #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
         outline: none;
-        background-color: white;
+        background-color: black;
     }
 @media (min-width: 992px) {
   #mainNav {
@@ -10203,9 +10212,9 @@ body {
   #mainNav .nav-link:hover {
     color: black;
   }
-  #mainNav .nav-link:active {
-    color: #fff;
-  }
+    #mainNav .nav-link:active {
+        color: #64a19d;
+    }
   #mainNav.navbar-shrink {
     background-color: #fff;
   }
@@ -10372,10 +10381,15 @@ body {
     font-size: 1rem;
 }
 
+.masthead2 h3 {
+        margin: 20px;
+    }
+
 @media (min-width: 768px) {
     .masthead2 h1 {
         font-size: 4rem;
         line-height: 4rem;
+        margin:20px;
     }
 }
 
@@ -10390,11 +10404,15 @@ body {
             line-height: 3.5rem;
             letter-spacing: 0.4rem;
             padding-top: 88px;
+            padding-bottom:3px;
         }
 
         .masthead2 h2 {
             max-width: 30rem;
             font-size: 1.25rem;
+        }
+        .masthead2 h3 {
+            margin: 20px;
         }
 }
 

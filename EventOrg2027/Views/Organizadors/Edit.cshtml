@@ -4,46 +4,47 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
-<h4>Organizador</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="OrganizadorId" />
-            <div class="form-group">
-                <label asp-for="NomeOrganizador" class="control-label"></label>
-                <input asp-for="NomeOrganizador" class="form-control" />
-                <span asp-validation-for="NomeOrganizador" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Contacto" class="control-label"></label>
-                <input asp-for="Contacto" class="form-control" />
-                <span asp-validation-for="Contacto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataNascimento" class="control-label"></label>
-                <input asp-for="DataNascimento" class="form-control" />
-                <span asp-validation-for="DataNascimento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailAddress" class="control-label"></label>
-                <input asp-for="EmailAddress" class="form-control" />
-                <span asp-validation-for="EmailAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<h4>.</h4>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <h3>Editar Organizador</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="OrganizadorId" />
+                <div class="form-group">
+                    <label asp-for="NomeOrganizador" class="control-label">Organizador ou Organização</label>
+                    <input asp-for="NomeOrganizador" class="form-control" />
+                    <span asp-validation-for="NomeOrganizador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Contacto" class="control-label">Contacto</label>
+                    <input asp-for="Contacto" class="form-control" />
+                    <span asp-validation-for="Contacto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataNascimento" class="control-label">Data Parceria</label>
+                    <input asp-for="DataNascimento" class="form-control" />
+                    <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmailAddress" class="control-label">Email</label>
+                    <input asp-for="EmailAddress" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                    <p></p>
+                    <p><a asp-action="Index" class="btn btn-dark">Voltar para a lista</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

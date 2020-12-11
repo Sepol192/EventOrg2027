@@ -6,62 +6,68 @@
 
 <h1>Edit</h1>
 
-<h4>Eventos</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="EventosId" />
-            <div class="form-group">
-                <label asp-for="NomeEventos" class="control-label"></label>
-                <input asp-for="NomeEventos" class="form-control" />
-                <span asp-validation-for="NomeEventos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Lotacao" class="control-label"></label>
-                <input asp-for="Lotacao" class="form-control" />
-                <span asp-validation-for="Lotacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataRealizacao" class="control-label"></label>
-                <input asp-for="DataRealizacao" class="form-control" />
-                <span asp-validation-for="DataRealizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraRealizacao" class="control-label"></label>
-                <input asp-for="HoraRealizacao" class="form-control" />
-                <span asp-validation-for="HoraRealizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LocalidadeId" class="control-label"></label>
-                <select asp-for="LocalidadeId" class="form-control" asp-items="ViewBag.LocalidadeId"></select>
-                <span asp-validation-for="LocalidadeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TipoEventosId" class="control-label"></label>
-                <select asp-for="TipoEventosId" class="form-control" asp-items="ViewBag.TipoEventosId"></select>
-                <span asp-validation-for="TipoEventosId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrganizadorId" class="control-label"></label>
-                <select asp-for="OrganizadorId" class="form-control" asp-items="ViewBag.OrganizadorId"></select>
-                <span asp-validation-for="OrganizadorId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<h4>.</h4>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <h3> Editar Evento</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="EventosId" />
+                <div class="form-group">
+                    <label asp-for="NomeEventos" class="control-label">Nome do Evento</label>
+                    <input asp-for="NomeEventos" class="form-control" />
+                    <span asp-validation-for="NomeEventos" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descricao" class="control-label">Descrição</label>
+                    <input asp-for="Descricao" class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Lotacao" class="control-label">Lotação</label>
+                    <input asp-for="Lotacao" class="form-control" />
+                    <span asp-validation-for="Lotacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataRealizacao" class="control-label">Data de Realização</label>
+                    <input asp-for="DataRealizacao" class="form-control" />
+                    <span asp-validation-for="DataRealizacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoraRealizacao" class="control-label">Hora de Realização</label>
+                    <input asp-for="HoraRealizacao" class="form-control" />
+                    <span asp-validation-for="HoraRealizacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LocalidadeId" class="control-label">Localidade</label>
+                    <select asp-for="LocalidadeId" class="form-control" asp-items="ViewBag.LocalidadeId">
+                        <option value="">-- Localidade --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TipoEventosId" class="control-label">Tipo de Evento</label>
+                    <select asp-for="TipoEventosId" class="form-control" asp-items="ViewBag.TipoEventosId">
+                        <option value="">-- Tipo de Evento --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OrganizadorId" class="control-label">Organizador</label>
+                    <select asp-for="OrganizadorId" class="form-control" asp-items="ViewBag.OrganizadorId">
+                        <option value="">-- Organizador --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                    <p></p>
+                    <p><a asp-action="Index" class="btn btn-dark">Voltar para a lista</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
