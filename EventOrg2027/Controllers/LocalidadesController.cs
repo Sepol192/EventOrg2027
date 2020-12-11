@@ -72,7 +72,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocalidadeId,NomeLocalidade")] Localidade localidade)
+        public async Task<IActionResult> Create([Bind("LocalidadeId,NomeLocalidade,Descricao,Populacao")] Localidade localidade)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LocalidadeId,NomeLocalidade")] Localidade localidade)
+        public async Task<IActionResult> Edit(int id, [Bind("LocalidadeId,NomeLocalidade,Descricao,Populacao")] Localidade localidade)
         {
             if (id != localidade.LocalidadeId)
             {

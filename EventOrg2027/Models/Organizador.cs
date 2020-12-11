@@ -21,9 +21,11 @@ namespace EventOrg2027.Models
 
         [Required(ErrorMessage = "Por favor, introduza a Data de Nascimento")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza o Email")]
+        [RegularExpression(@"(\w+(\.\w+)*@[a-zA-Z_]+?\.[a-zA-Z]{2,6})")]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
 

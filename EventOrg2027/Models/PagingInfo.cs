@@ -9,6 +9,7 @@ namespace EventOrg2027.Models
     {
         public const int DEFAULT_PAGE_SIZE = 3;
         public const int NUMBER_PAGES_SHOW_BEFORE_AFTER = 5;
+        public const int PAGE_SIZE_TABLE = 8;
 
         public int TotalItems { get; set; }
 

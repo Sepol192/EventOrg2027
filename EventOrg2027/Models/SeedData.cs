@@ -29,11 +29,11 @@ namespace EventOrg2027.Models
               {
                   return;
               }
-            
+            */
               if (dbContext.Organizador.Any())
               {
                   return;
-              }*/
+              }
 
             /*dbContext.Eventos.AddRange(
                 new Eventos { 
@@ -199,7 +199,21 @@ namespace EventOrg2027.Models
             );*/
 
             // dbContext.SaveChanges();
+            for (int i = 0; i < 100; i++)
+            {
+                dbContext.Organizador.AddRange(
+                new Organizador
+                {
+                    NomeOrganizador = "Fanc",
+                    Contacto = "966786786",
+                    DataNascimento = new DateTime(2020, 11, 1),
+                    EmailAddress = "fnac@gmail.com",
 
+                }
+                );
+
+                dbContext.SaveChanges();
+            }
         }
 
 

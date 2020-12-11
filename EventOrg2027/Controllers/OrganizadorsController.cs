@@ -19,9 +19,25 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            return View(await _context.Organizador.ToListAsync());
+            var pagination = new PagingInfo
+            {
+                CurrentPage = page,
+                PageSize = PagingInfo.PAGE_SIZE_TABLE,
+                TotalItems = _context.Organizador.Count()
+            };
+
+            return View(
+                new OrganizadorListViewModel
+                {
+                    Organizadors = _context.Organizador
+                        .OrderBy(p => p.NomeOrganizador)
+                        .Skip((page - 1) * pagination.PageSize)
+                        .Take(pagination.PageSize),
+                    Pagination = pagination
+                }
+            );
         }
 
         // GET: Organizadors/Details/5
@@ -85,7 +101,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento")] Organizador organizador)
+        public async Task<IActionResult> Edit(int id, [Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento,EmailAddress")] Organizador organizador)
         {
             if (id != organizador.OrganizadorId)
             {
