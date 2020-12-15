@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EventOrg2027.Models
-{ 
+{
     public class SeedData
     {
         internal static void Populate(EventOrgDbContext dbContext)
@@ -15,25 +13,25 @@ namespace EventOrg2027.Models
 
         private static void PopulateEvents(EventOrgDbContext dbContext)
         {
-            /*if (dbContext.Eventos.Any())
+            if (dbContext.Eventos.Any())
             {
                 return;
             }
-            
+
             if (dbContext.Localidade.Any())
             {
                 return;
             }
-            
-              if (dbContext.TiposEventos.Any())
-              {
-                  return;
-              }
-            
-              if (dbContext.Organizador.Any())
-              {
-                  return;
-              }*/
+
+            if (dbContext.TiposEventos.Any())
+            {
+                return;
+            }
+
+            if (dbContext.Organizador.Any())
+            {
+                return;
+            }
 
             /*dbContext.Eventos.AddRange(
                 new Eventos { 
@@ -95,39 +93,23 @@ namespace EventOrg2027.Models
                 }
 
             );*/
-            /*
-            dbContext.Localidade.AddRange(
-                new Localidade
-                {
-                    NomeLocalidade = "Guarda",
-                },
-                new Localidade
-                {
-                    NomeLocalidade = "Celorico",
-                },
-                new Localidade
-                {
-                    NomeLocalidade = "Seia",
-                }
-                );
 
             dbContext.TiposEventos.AddRange(
               new TipoEventos
-          {
-                NomeTipoEventos = "Música",
-             },
+              {
+                  NomeTipoEventos = "Música",
+              },
              new TipoEventos
              {
-                NomeTipoEventos = "Concerto",
-              },
+                 NomeTipoEventos = "Concerto",
+             },
                   new TipoEventos
-             {
-                    NomeTipoEventos = "Arte",
-           }
+                  {
+                      NomeTipoEventos = "Arte",
+                  }
           );
-            dbContext.SaveChanges();*/
-            /*
-            for(int i = 0; i < 100; i++)
+
+            for (int i = 0; i < 100; i++)
             {
                 dbContext.Eventos.AddRange(
                 new Eventos
@@ -137,30 +119,27 @@ namespace EventOrg2027.Models
                     DataRealizacao = new DateTime(2020, 11, 1),
                     HoraRealizacao = new DateTime(7),
                     Lotacao = 50,
-                    LocalidadeId=1,
-                    OrganizadoresId=1,
-                    TipoEventosId=1,
+                    LocalidadeId = 1,
+                    OrganizadoresId = 1,
+                    TipoEventosId = 1,
 
                 }
                 );
-
-                dbContext.SaveChanges();
             }
-            
+
             dbContext.Organizador.AddRange(
             new Organizador
             {
-                    NomeOrganizador = "Dança contemporânea",
-                    Contacto = "961656567",
-                    DataNascimento = new DateTime(2020, 11, 1),
-                    EmailAddress = "danca.hbm@gmail.com",
-}
-);
+                NomeOrganizador = "Dança contemporânea",
+                Contacto = "961656567",
+                DataNascimento = new DateTime(2020, 11, 1),
+                EmailAddress = "danca.hbm@gmail.com",
+            }
+            );
 
-            dbContext.SaveChanges();
-            
 
-            /*dbContext.Localidade.AddRange(
+
+            dbContext.Localidade.AddRange(
                 new Localidade
                 {
                     NomeLocalidade = "Guarda",
@@ -178,9 +157,14 @@ namespace EventOrg2027.Models
                     NomeLocalidade = "Seia",
                     Descricao = "jijoj",
                     Populacao = 122,
+                },
+                new Localidade
+                {
+                    NomeLocalidade = "Mangualde",
+                    Descricao = "dsfgsewgweg",
+                    Populacao = 1241,
                 }
                 );
-            dbContext.SaveChanges();*/
 
 
             /*dbContext.Eventos.AddRange(
@@ -198,7 +182,7 @@ namespace EventOrg2027.Models
             }
             );*/
 
-            // dbContext.SaveChanges();
+            dbContext.SaveChanges();
 
         }
 

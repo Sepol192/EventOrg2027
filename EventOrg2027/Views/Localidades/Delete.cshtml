@@ -33,6 +33,12 @@
             <div class="form-group">
                 <form asp-action="Delete">
                     <input type="hidden" asp-for="LocalidadeId" />
+                    <span id="confirmDeleteSpan_" style="display:none">
+                        <span>Tem a certeza que pretende Apagar?</span>
+                        <button type="submit" class="button button1">Sim&nbsp;<i class="fa fa-trash"></i></button>
+                        <a href="#" class="button button3"
+                           onclick="confirmDelete(false)">Não</a>
+                    </span>
                     <input type="submit" value="Apagar" class="btn btn-danger" />
                     <p></p>
                     <p><a asp-action="Index" class="btn btn-dark">Voltar</a></p>

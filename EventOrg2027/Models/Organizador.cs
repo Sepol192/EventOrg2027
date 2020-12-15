@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 namespace EventOrg2027.Models
 {
     public class Organizador
-    { 
+    {
         public int OrganizadorId { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza o Nome do Organizador")]

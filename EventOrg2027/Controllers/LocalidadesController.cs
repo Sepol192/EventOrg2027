@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using EventOrg2027.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using EventOrg2027.Data;
-using EventOrg2027.Models;
 
 namespace EventOrg2027.Controllers
 {
     public class LocalidadesController : Controller
     {
         private readonly EventOrgDbContext _context;
-        
+
 
 
         public LocalidadesController(EventOrgDbContext context)
@@ -24,21 +20,10 @@ namespace EventOrg2027.Controllers
         // GET: Localidades
         public async Task<IActionResult> Index(int page = 1)
         {
-            var pagination = new PagingInfo
-            {
-                CurrentPage = page,
-                PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
-                TotalItems = _context.Localidade.Count()
-            };
-
             return View(
                 new LocalidadesListViewModel
                 {
                     Localidades = _context.Localidade
-                        .OrderBy(p => p.NomeLocalidade)
-                        .Skip((page - 1) * pagination.PageSize)
-                        .Take(pagination.PageSize),
-                    Pagination = pagination
                 }
             );
         }
@@ -72,7 +57,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocalidadeId,NomeLocalidade")] Localidade localidade)
+        public async Task<IActionResult> Create([Bind("LocalidadeId,NomeLocalidade,Descricao,Populacao")] Localidade localidade)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +89,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LocalidadeId,NomeLocalidade")] Localidade localidade)
+        public async Task<IActionResult> Edit(int id, [Bind("LocalidadeId,NomeLocalidade,Descricao,Populacao")] Localidade localidade)
         {
             if (id != localidade.LocalidadeId)
             {

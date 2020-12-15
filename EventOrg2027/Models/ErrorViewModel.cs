@@ -1,5 +1,3 @@
-using System;
-
 namespace EventOrg2027.Models
 {
     public class ErrorViewModel

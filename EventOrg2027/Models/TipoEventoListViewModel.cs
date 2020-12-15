@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace EventOrg2027.Models
 {
@@ -9,5 +6,5 @@ namespace EventOrg2027.Models
     {
         public IEnumerable<TipoEventos> TipoEventos { get; set; }
         public PagingInfo Pagination { get; set; }
-    } 
+    }
 }
