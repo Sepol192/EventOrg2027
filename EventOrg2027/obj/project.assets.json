@@ -8837,19 +8837,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\afons\\.nuget\\packages\\": {}
+    "C:\\Users\\Marcelo Lopes\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\afons\\Source\\Repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
+      "projectUniqueName": "C:\\Users\\Marcelo Lopes\\Source\\Repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
       "projectName": "EventOrg2027",
-      "projectPath": "C:\\Users\\afons\\Source\\Repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
-      "packagesPath": "C:\\Users\\afons\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\afons\\Source\\Repos\\EventOrg2027\\EventOrg2027\\obj\\",
+      "projectPath": "C:\\Users\\Marcelo Lopes\\Source\\Repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
+      "packagesPath": "C:\\Users\\Marcelo Lopes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Marcelo Lopes\\Source\\Repos\\EventOrg2027\\EventOrg2027\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\afons\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Marcelo Lopes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

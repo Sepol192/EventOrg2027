@@ -357,4 +357,4 @@ C:\Users\Marcelo Lopes\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcorea
 C:\Users\Marcelo Lopes\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.dll
 C:\Users\Marcelo Lopes\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.pdb
 C:\Users\Marcelo Lopes\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.genruntimeconfig.cache
-C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csprojAssemblyReference.cache
+C:\Users\Marcelo Lopes\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csprojAssemblyReference.cache
