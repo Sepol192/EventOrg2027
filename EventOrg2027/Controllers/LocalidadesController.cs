@@ -27,7 +27,7 @@ namespace EventOrg2027.Controllers
             var pagination = new PagingInfo
             {
                 CurrentPage = page,
-                PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
+                PageSize = PagingInfo.PAGE_SIZE_TABLE,
                 TotalItems = _context.Localidade.Count()
             };
 

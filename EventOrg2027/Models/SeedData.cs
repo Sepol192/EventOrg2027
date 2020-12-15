@@ -15,25 +15,93 @@ namespace EventOrg2027.Models
 
         private static void PopulateEvents(EventOrgDbContext dbContext)
         {
-            /*if (dbContext.Eventos.Any())
+            
+            /*
+            if (!dbContext.Localidade.Any())
             {
-                return;
+                dbContext.Localidade.AddRange(
+                new Localidade
+                {
+                    NomeLocalidade = "Guarda",
+                    Descricao = "jijoj",
+                    Populacao = 122,
+                },
+                new Localidade
+                {
+                    NomeLocalidade = "Celorico",
+                    Descricao = "jijoj",
+                    Populacao = 122,
+                },
+                new Localidade
+                {
+                    NomeLocalidade = "Seia",
+                    Descricao = "jijoj",
+                    Populacao = 122,
+                }
+                );
+                dbContext.SaveChanges();
+
             }
             
-            if (dbContext.Localidade.Any())
-            {
-                return;
+              if (!dbContext.TiposEventos.Any())
+              {
+                    dbContext.TiposEventos.AddRange(
+                        new TipoEventos
+                        {
+                            NomeTipoEventos = "Música",
+                        },
+                       new TipoEventos
+                       {
+                           NomeTipoEventos = "Concerto",
+                       },
+                       new TipoEventos
+                       {
+                           NomeTipoEventos = "Arte",
+                       }
+                       );
+                dbContext.SaveChanges();
+
             }
-            
-              if (dbContext.TiposEventos.Any())
+           
+              if (!dbContext.Organizador.Any())
               {
-                  return;
-              }
-            */
-              if (dbContext.Organizador.Any())
-              {
-                  return;
-              }
+                for (int i = 0; i < 20; i++)
+                {
+                    dbContext.Organizador.AddRange(
+                    new Organizador
+                    {
+                        NomeOrganizador = "Fanc",
+                        Contacto = "966786786",
+                        DataNascimento = new DateTime(2020, 11, 1),
+                        EmailAddress = "fnac@gmail.com",
+
+                    }
+                    );
+                    dbContext.SaveChanges();
+                }
+            }
+
+                if (!dbContext.Eventos.Any())
+                    {
+                        for (int i = 0; i < 20; i++)
+                        {
+                            dbContext.Eventos.AddRange(
+                            new Eventos
+                            {
+                                NomeEventos = "Dança contemporânea",
+                                Descricao = "Que ou quem é do mesmo tempo ou da mesma época contemporâneo",
+                                DataRealizacao = new DateTime(2020, 11, 1),
+                                HoraRealizacao = new DateTime(7),
+                                Lotacao = 50,
+                                LocalidadeId = 1,
+                                OrganizadorId = 1,
+                                TipoEventosId = 1.
+                            }
+                            );
+                            dbContext.SaveChanges();
+                        }
+                    }
+
 
             /*dbContext.Eventos.AddRange(
                 new Eventos { 
@@ -95,92 +163,24 @@ namespace EventOrg2027.Models
                 }
 
             );*/
-            /*
-            dbContext.Localidade.AddRange(
-                new Localidade
-                {
-                    NomeLocalidade = "Guarda",
-                },
-                new Localidade
-                {
-                    NomeLocalidade = "Celorico",
-                },
-                new Localidade
-                {
-                    NomeLocalidade = "Seia",
-                }
-                );
-
-            dbContext.TiposEventos.AddRange(
-              new TipoEventos
-          {
-                NomeTipoEventos = "Música",
-             },
-             new TipoEventos
-             {
-                NomeTipoEventos = "Concerto",
-              },
-                  new TipoEventos
-             {
-                    NomeTipoEventos = "Arte",
-           }
-          );
-            dbContext.SaveChanges();*/
-            /*
-            for(int i = 0; i < 100; i++)
-            {
-                dbContext.Eventos.AddRange(
-                new Eventos
-                {
-                    NomeEventos = "Dança contemporânea",
-                    Descricao = "Que ou quem é do mesmo tempo ou da mesma época contemporâneo",
-                    DataRealizacao = new DateTime(2020, 11, 1),
-                    HoraRealizacao = new DateTime(7),
-                    Lotacao = 50,
-                    LocalidadeId=1,
-                    OrganizadoresId=1,
-                    TipoEventosId=1,
-
-                }
-                );
-
-                dbContext.SaveChanges();
-            }
             
-            dbContext.Organizador.AddRange(
+
+            
+            
+            /*dbContext.Organizador.AddRange(
             new Organizador
             {
                     NomeOrganizador = "Dança contemporânea",
                     Contacto = "961656567",
                     DataNascimento = new DateTime(2020, 11, 1),
                     EmailAddress = "danca.hbm@gmail.com",
-}
-);
+                  }
+            );*/
 
-            dbContext.SaveChanges();
             
 
-            /*dbContext.Localidade.AddRange(
-                new Localidade
-                {
-                    NomeLocalidade = "Guarda",
-                    Descricao = "jijoj",
-                    Populacao = 122,
-                },
-                new Localidade
-                {
-                    NomeLocalidade = "Celorico",
-                    Descricao = "jijoj",
-                    Populacao = 122,
-                },
-                new Localidade
-                {
-                    NomeLocalidade = "Seia",
-                    Descricao = "jijoj",
-                    Populacao = 122,
-                }
-                );
-            dbContext.SaveChanges();*/
+            
+
 
 
             /*dbContext.Eventos.AddRange(
@@ -192,28 +192,14 @@ namespace EventOrg2027.Models
                 HoraRealizacao = new DateTime(7),
                 Lotacao = 50,
                 LocalidadeId = 1,
-                OrganizadoresId = 1,
+                OrganizadorId = 1,
                 TipoEventosId = 1,
 
             }
             );*/
 
             // dbContext.SaveChanges();
-            for (int i = 0; i < 100; i++)
-            {
-                dbContext.Organizador.AddRange(
-                new Organizador
-                {
-                    NomeOrganizador = "Fanc",
-                    Contacto = "966786786",
-                    DataNascimento = new DateTime(2020, 11, 1),
-                    EmailAddress = "fnac@gmail.com",
 
-                }
-                );
-
-                dbContext.SaveChanges();
-            }
         }
 
 

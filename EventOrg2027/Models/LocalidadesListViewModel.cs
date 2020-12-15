@@ -8,6 +8,8 @@ namespace EventOrg2027.Models
     public class LocalidadesListViewModel
     {
         public IEnumerable<Localidade> Localidades { get; set; }
+
         public PagingInfo Pagination { get; set; }
+
     }
 }
