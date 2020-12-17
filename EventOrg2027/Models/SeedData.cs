@@ -16,7 +16,7 @@ namespace EventOrg2027.Models
         private static void PopulateEvents(EventOrgDbContext dbContext)
         {
             
-            /*
+            
             if (!dbContext.Localidade.Any())
             {
                 dbContext.Localidade.AddRange(
@@ -65,7 +65,7 @@ namespace EventOrg2027.Models
            
               if (!dbContext.Organizador.Any())
               {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     dbContext.Organizador.AddRange(
                     new Organizador
@@ -80,10 +80,12 @@ namespace EventOrg2027.Models
                     dbContext.SaveChanges();
                 }
             }
-
-                if (!dbContext.Eventos.Any())
+            int LocalidadeId = (from d in dbContext.Localidade where d.NomeLocalidade == "Guarda" select d.LocalidadeId).First();
+            int OrganizadorId = (from d in dbContext.Organizador where d.NomeOrganizador == "Fanc" select d.OrganizadorId).First();
+            int TipoEventosId = (from d in dbContext.TiposEventos where d.NomeTipoEventos == "Concerto" select d.TipoEventosId).First();
+            if (!dbContext.Eventos.Any())
                     {
-                        for (int i = 0; i < 20; i++)
+                        for (int i = 0; i < 7; i++)
                         {
                             dbContext.Eventos.AddRange(
                             new Eventos
@@ -93,9 +95,9 @@ namespace EventOrg2027.Models
                                 DataRealizacao = new DateTime(2020, 11, 1),
                                 HoraRealizacao = new DateTime(7),
                                 Lotacao = 50,
-                                LocalidadeId = 1,
-                                OrganizadorId = 1,
-                                TipoEventosId = 1.
+                                LocalidadeId = LocalidadeId,
+                                OrganizadorId = OrganizadorId,
+                                TipoEventosId = TipoEventosId,
                             }
                             );
                             dbContext.SaveChanges();
@@ -162,12 +164,11 @@ namespace EventOrg2027.Models
 
                 }
 
-            );*/
+            );
             
 
             
-            
-            /*dbContext.Organizador.AddRange(
+            dbContext.Organizador.AddRange(
             new Organizador
             {
                     NomeOrganizador = "Dança contemporânea",
@@ -175,15 +176,10 @@ namespace EventOrg2027.Models
                     DataNascimento = new DateTime(2020, 11, 1),
                     EmailAddress = "danca.hbm@gmail.com",
                   }
-            );*/
-
-            
-
-            
+            );
 
 
-
-            /*dbContext.Eventos.AddRange(
+            dbContext.Eventos.AddRange(
             new Eventos
             {
                 NomeEventos = "Dança contemporânea",
