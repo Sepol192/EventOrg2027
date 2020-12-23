@@ -4436,11 +4436,12 @@ div.cardeventos {
     flex-wrap: wrap;
     justify-content: center; /* divs centradas na horizontal*/
     align-items: center;
+
 }
 
 .cardeventos {
     display: grid;
-    height: 28vw;
+    height: 30vw;
     width: 40vh;
     margin: 10px 50px 10px 50px;
     padding: 10px 5px 10px 5px;
