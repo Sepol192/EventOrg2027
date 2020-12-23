@@ -60,7 +60,8 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (eventos == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este evento talvez tenha sido eliminado.";
+                return View("ViewINSUCESSO");
             }
 
             return View(eventos);
@@ -86,7 +87,8 @@ namespace EventOrg2027.Controllers
             {
                 _context.Add(eventos);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Este evento foi criado com sucesso";
+                return View("ViewSUCESSO");
             }
             ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade", eventos.LocalidadeId);
             ViewData["OrganizadorId"] = new SelectList(_context.Organizador, "OrganizadorId", "NomeOrganizador", eventos.OrganizadorId);
@@ -105,11 +107,13 @@ namespace EventOrg2027.Controllers
             var eventos = await _context.Eventos.FindAsync(id);
             if (eventos == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este evento talvez tenha sido eliminado.";
+                return View("ViewINSUCESSO");
             }
             ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade", eventos.LocalidadeId);
             ViewData["OrganizadorId"] = new SelectList(_context.Organizador, "OrganizadorId", "NomeOrganizador", eventos.OrganizadorId);
             ViewData["TipoEventosId"] = new SelectList(_context.TiposEventos, "TipoEventosId", "NomeTipoEventos", eventos.TipoEventosId);
+            
             return View(eventos);
         }
 
@@ -136,14 +140,18 @@ namespace EventOrg2027.Controllers
                 {
                     if (!EventosExists(eventos.EventosId))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Este evento foi eliminado, pode inserir outro com as mesmas informações";
+                        return View("ViewINSUCESSO");
                     }
                     else
                     {
+                        ViewBag.Message = "Este evento talvez tenha eliminado, tente novamente.";
+                        return View("ViewINSUCESSO");
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Este evento foi editado com sucesso";
+                return View("ViewSUCESSO");
             }
             ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade", eventos.LocalidadeId);
             ViewData["OrganizadorId"] = new SelectList(_context.Organizador, "OrganizadorId", "NomeOrganizador", eventos.OrganizadorId);
@@ -166,7 +174,8 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (eventos == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este evento talvez tenha sido eliminado";
+                return View("ViewINSUCESSO");
             }
 
             return View(eventos);
@@ -178,9 +187,10 @@ namespace EventOrg2027.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var eventos = await _context.Eventos.FindAsync(id);
-            _context.Eventos.Remove(eventos);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                _context.Eventos.Remove(eventos);
+                await _context.SaveChangesAsync();
+            ViewBag.Message = "Este evento foi apagado com sucesso";
+            return View("ViewSUCESSO");
         }
 
         private bool EventosExists(int id)
