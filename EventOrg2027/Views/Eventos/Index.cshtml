@@ -32,12 +32,12 @@
                         </div>
                     </div>
                 </div>
-
-
             }
         </div>
+
+        <div style="margin-top:10em">
             <nav class="mt-4">
-                <ul class="pagination" >
+                <ul class="pagination">
                     <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">Primeira</a></li>
 
                     @{
@@ -63,5 +63,6 @@
                     <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Última</a></li>
                 </ul>
             </nav>
+        </div>
 </header>
 
