@@ -10352,16 +10352,12 @@ body {
         }
 }
 .masthead2 {
-    position: relative;
+    position: absolute;
     width: 100%;
     background-color: white;
     height: auto;
     min-height: 30rem;
     padding: 15rem 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
 }
 
 .masthead2 h1 {
