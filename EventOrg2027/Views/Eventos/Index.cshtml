@@ -4,38 +4,40 @@
     ViewData["Title"] = "Lista De Eventos";
 }
 
-<header class="masthead2 text-center" >
-    <h1>@ViewBag.Title </h1>
+<header class="masthead2 text-center">
     
+        <h1>@ViewBag.Title </h1>
+
         <p>
             <a asp-action="Create" style="font-size: 1vw">Criar Novo</a>
         </p>
 
         <div class="cardeventos-body">
-            @foreach (var p in Model.Eventos)
 
-            {
+                @foreach (var p in Model.Eventos)
 
-                <div class="cardeventos ">
-                    <div class="card-body">
-                        <h5 class="card-title" style="font-size: 1.5vw">@p.NomeEventos</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.7vw">@p.DataRealizacao.ToString("dd-MM-yyyy") Ás @p.HoraRealizacao.ToString("hh\\:mm")</h6>
-                        <p class="card-text" style="font-size: 0.9vw">@p.Localidade.NomeLocalidade</p>
-                        <p></p>
-                        <p class="card-subtitle mb-2 text-muted" style="font-size: 1vw">Categoria: @p.TipoEventos.NomeTipoEventos</p>
-                        <h5 class="card-title" style="font-size: 0.8vw">Até @p.Lotacao pessoas</h5>
-                        <div style="margin-top:40px">
-                            <a asp-action="Details" asp-route-id="@p.EventosId"><buton style="font-size: 0.8vw">Ver</buton></a>
+                {
+
+                    <div class="cardeventos ">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 1.5vw">@p.NomeEventos</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.7vw">@p.DataRealizacao.ToString("dd-MM-yyyy") Ás @p.HoraRealizacao.ToString("hh\\:mm")</h6>
+                            <p class="card-text" style="font-size: 0.9vw">@p.Localidade.NomeLocalidade</p>
                             <p></p>
-                            <a asp-action="Edit" asp-route-id="@p.EventosId">Editar</a> |
-                            <a asp-action="Delete" asp-route-id="@p.EventosId">Eliminar</a>
+                            <p class="card-subtitle mb-2 text-muted" style="font-size: 1vw">Categoria: @p.TipoEventos.NomeTipoEventos</p>
+                            <h5 class="card-title" style="font-size: 0.8vw">Até @p.Lotacao pessoas</h5>
+                            <div style="margin-top:40px">
+                                <a asp-action="Details" asp-route-id="@p.EventosId"><buton style="font-size: 0.8vw">Ver</buton></a>
+                                <p></p>
+                                <a asp-action="Edit" asp-route-id="@p.EventosId">Editar</a> |
+                                <a asp-action="Delete" asp-route-id="@p.EventosId">Eliminar</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
 
-        <div style="margin-top:10em">
+        <div>
             <nav class="mt-4">
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">Primeira</a></li>
