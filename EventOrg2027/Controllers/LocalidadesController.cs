@@ -22,7 +22,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Localidades
-        public async Task<IActionResult> Index(int page = 1)
+        public IActionResult Index(int page = 1)
         {
             var pagination = new PagingInfo
             {

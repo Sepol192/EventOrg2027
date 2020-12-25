@@ -21,7 +21,7 @@ namespace EventOrg2027.Controllers
 
 
         // GET: Eventos 
-        public async Task<IActionResult> Index(int page = 1)
+        public IActionResult Index(int page = 1)
         {
             var pagination = new PagingInfo
 
@@ -30,7 +30,7 @@ namespace EventOrg2027.Controllers
                 PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
                 TotalItems = _context.Eventos.Count()
             };
-            
+
             return View(
 
                 new EventosListViewModel
@@ -44,7 +44,7 @@ namespace EventOrg2027.Controllers
                 }
             );
         }
-        
+
         // GET: Eventos/Details/5
         public async Task<IActionResult> Details(int? id)
         {

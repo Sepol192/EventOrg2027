@@ -8842,11 +8842,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\afons\\Source\\Repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
+      "projectUniqueName": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
       "projectName": "EventOrg2027",
-      "projectPath": "C:\\Users\\afons\\Source\\Repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
+      "projectPath": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\EventOrg2027.csproj",
       "packagesPath": "C:\\Users\\afons\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\afons\\Source\\Repos\\EventOrg2027\\EventOrg2027\\obj\\",
+      "outputPath": "C:\\Users\\afons\\source\\repos\\EventOrg2027\\EventOrg2027\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\afons\\AppData\\Roaming\\NuGet\\NuGet.Config",

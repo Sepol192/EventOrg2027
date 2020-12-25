@@ -22,7 +22,7 @@ namespace EventOrg2027.Controllers
 
 
         // GET: TipoEventos
-        public async Task<IActionResult> Index(int page = 1)
+        public IActionResult Index(int page = 1)
         {
             var pagination = new PagingInfo
             {
@@ -42,7 +42,7 @@ namespace EventOrg2027.Controllers
                 }
             );
         }
-        
+
         // GET: TipoEventos/Details/5
         public async Task<IActionResult> Details(int? id)
         {

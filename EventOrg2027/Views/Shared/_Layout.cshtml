@@ -18,38 +18,39 @@
 </head>
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" asp-action="Index" asp-controller="Home">EventOrg2027</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Eventos" asp-action="Index">Eventos</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="TipoEventos" asp-action="Index">Tipos de Eventos</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Localidades" asp-action="Index">Localidades</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Organizadors" asp-action="Index">Organizadores</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-action="Sobre" asp-controller="Home">Sobre</a></li>
-                </ul>
-            </div>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                <div class="container">
+                    <a class="navbar-brand js-scroll-trigger" asp-action="Index" asp-controller="Home">EventOrg2027</a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Eventos" asp-action="Index">Eventos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="TipoEventos" asp-action="Index">Tipos de Eventos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Localidades" asp-action="Index">Localidades</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Organizadors" asp-action="Index">Organizadores</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-action="Sobre" asp-controller="Home">Sobre</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </nav>
 
-    <div>
-
-        @RenderBody()
-
-    </div>
-   
-
-    <footer class="border-top footer2 text-muted">
+    <footer class="border-bottom footer text-muted">
         <div class="container" style="text-align:center">
-            &copy; EventOrg2027 - <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            &copy; EventOrg2027 - <a asp-area="" asp-controller="Home" asp-action="Index">Home -</a>
+                                  <a asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy</a>
         </div>
     </footer>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
