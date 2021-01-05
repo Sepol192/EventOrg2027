@@ -7,6 +7,7 @@
 <h1>Delete</h1>
 
 <h4>.</h4>
+@{
     <div>
         <h3>Localidade</h3>
         <h5>Tem a certeza que quer apagar esta localidade?</h5>
@@ -33,10 +34,13 @@
             <div class="form-group">
                 <form asp-action="Delete">
                     <input type="hidden" asp-for="LocalidadeId" />
-                    <input type="submit" value="Apagar" class="btn btn-danger" />
+                    <input type="submit" value="Apagar" class="btn btn-danger" onclick="return confirm('Deseja eliminar a localidade: @Model.NomeLocalidade')" />
+                    @Html.Raw(TempData["Success"])
                     <p></p>
                     <p><a asp-action="Index" class="btn btn-dark">Voltar</a></p>
                 </form>
             </div>
         </dl>
     </div>
+}
+@Html.Raw(TempData["Success"])

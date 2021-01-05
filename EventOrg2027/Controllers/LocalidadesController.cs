@@ -55,7 +55,8 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.LocalidadeId == id);
             if (localidade == null)
             {
-                return NotFound();
+                ViewBag.Message = "Esta localidade talvez tenha sido eliminada.";
+                return View("ViewINSUCESSO");
             }
 
             return View(localidade);
@@ -78,7 +79,8 @@ namespace EventOrg2027.Controllers
             {
                 _context.Add(localidade);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Esta localidade foi criada com sucesso";
+                return View("ViewSUCESSO");
             }
             return View(localidade);
         }
@@ -94,7 +96,8 @@ namespace EventOrg2027.Controllers
             var localidade = await _context.Localidade.FindAsync(id);
             if (localidade == null)
             {
-                return NotFound();
+                ViewBag.Message = "Esta localidade talvez tenha sido eliminada.";
+                return View("ViewINSUCESSO");
             }
             return View(localidade);
         }
@@ -122,14 +125,18 @@ namespace EventOrg2027.Controllers
                 {
                     if (!LocalidadeExists(localidade.LocalidadeId))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Esta localidade foi eliminada, pode inserir outra com as mesmas informações";
+                        return View("ViewINSUCESSO");
                     }
                     else
                     {
+                        ViewBag.Message = "Esta localidade talvez tenha eliminada, tente novamente.";
+                        return View("ViewINSUCESSO");
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Esta localidade foi editada com sucesso";
+                return View("ViewSUCESSO");
             }
             return View(localidade);
         }
@@ -146,7 +153,8 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.LocalidadeId == id);
             if (localidade == null)
             {
-                return NotFound();
+                ViewBag.Message = "Esta localidade talvez tenha sido eliminada.";
+                return View("ViewINSUCESSO");
             }
 
             return View(localidade);
@@ -160,7 +168,8 @@ namespace EventOrg2027.Controllers
             var localidade = await _context.Localidade.FindAsync(id);
             _context.Localidade.Remove(localidade);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            ViewBag.Message = "Esta localidade foi apagada com sucesso";
+            return View("ViewSUCESSO");
         }
 
         private bool LocalidadeExists(int id)
