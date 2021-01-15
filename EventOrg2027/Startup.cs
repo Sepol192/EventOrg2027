@@ -48,6 +48,7 @@ namespace EventOrg2027
                     options.Password.RequiredLength = 6;
                     options.Password.RequiredUniqueChars = 4;
                     options.Password.RequireUppercase = true;
+                    options.Password.RequireNonAlphanumeric = false;
 
                     // Lockout
                     options.Lockout.AllowedForNewUsers = true;
