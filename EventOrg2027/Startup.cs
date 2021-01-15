@@ -36,8 +36,26 @@ namespace EventOrg2027
                 options.UseSqlServer(
                     Configuration.GetConnectionString("EventOrgConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                options =>
+                {
+                    // Sign in
+                    options.SignIn.RequireConfirmedAccount = false;
+
+                    // Password
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredUniqueChars = 4;
+                    options.Password.RequireUppercase = true;
+
+                    // Lockout
+                    options.Lockout.AllowedForNewUsers = true;
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                    options.Lockout.MaxFailedAccessAttempts = 5;
+
+                }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             
@@ -47,7 +65,7 @@ namespace EventOrg2027
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -77,14 +95,24 @@ namespace EventOrg2027
                 endpoints.MapRazorPages();
             });
 
+            SeedData.SeedRolesAsync(roleManager).Wait();
+            SeedData.SeedDefaultAdminAsync(userManager).Wait();
+
             if (env.IsDevelopment())
             {
-                using (var serviceScope = app.ApplicationServices.CreateScope())
+                /*using (var serviceScope = app.ApplicationServices.CreateScope())
                 {
                     var dbContext = serviceScope.ServiceProvider.GetService<EventOrgDbContext>();
                     SeedData.Populate(dbContext);
-                }
+                    
+
+                }*/
+                
+                SeedData.SeedDevUsersAsync(userManager).Wait();
+
             }
+
+
         }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EventOrg2027.Data;
 using EventOrg2027.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EventOrg2027.Controllers
 {
