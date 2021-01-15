@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,12 @@ namespace EventOrg2027.Models
 { 
     public class SeedData
     {
+        private const string DEFAULT_ADMIN_USER = "admin@ipg.pt";
+        private const string DEFAULT_ADMIN_PASSWORD = "Admin123";
+
+        private const string ROLE_ADMINISTRATOR = "Admin";
+        private const string ROLE_CUSTOMER = "Customer";
+
         internal static void Populate(EventOrgDbContext dbContext)
         {
             PopulateEvents(dbContext);
@@ -198,6 +205,58 @@ namespace EventOrg2027.Models
 
         }
 
+        /*internal static async Task SeedDefaultAdminAsync(UserManager<IdentityUser> userManager)
+        {
+            IdentityUser user = await userManager.FindByNameAsync(DEFAULT_ADMIN_USER);
 
+            if(user == null)
+            {
+                user = new IdentityUser(DEFAULT_ADMIN_USER);
+                await userManager.CreateAsync(user, DEFAULT_ADMIN_PASSWORD);
+            }
+
+        }*/
+
+
+        internal static async Task SeedDefaultAdminAsync(UserManager<IdentityUser> userManager)
+        {
+            await EnsureUserIsCreated(userManager, DEFAULT_ADMIN_USER, DEFAULT_ADMIN_PASSWORD, ROLE_ADMINISTRATOR);
+        }
+
+        private static async Task EnsureUserIsCreated(UserManager<IdentityUser> userManager, string username, string password, string role)
+        {
+            IdentityUser user = await userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                user = new IdentityUser(username);
+                await userManager.CreateAsync(user, password);
+            }
+
+            if (!await userManager.IsInRoleAsync(user, role))
+            {
+                await userManager.AddToRoleAsync(user, role);
+            }
+        }
+
+        internal static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+        {
+
+            await EnsureRoleIsCreated(roleManager, ROLE_ADMINISTRATOR);
+            await EnsureRoleIsCreated(roleManager, ROLE_CUSTOMER);
+        }
+
+        private static async Task EnsureRoleIsCreated(RoleManager<IdentityRole> roleManager, string role)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+
+        internal static async Task SeedDevUsersAsync(UserManager<IdentityUser> userManager)
+        {
+            await EnsureUserIsCreated(userManager, "marcelo@ipg.pt", "Marcelo123", ROLE_CUSTOMER);
+        }
     }
 }
