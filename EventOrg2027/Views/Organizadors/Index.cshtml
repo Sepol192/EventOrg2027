@@ -10,6 +10,14 @@
     <p>
         <a asp-action="Create">Criar Novo</a>
     </p>
+    <form asp-action="Index" method="get">
+        <p>
+            <input type="search" name="name" placeholder="Procurar por nome" value="@Model.SearchName" />
+            <input name="page" type="hidden" value="1" />
+            <button type="submit" value="Search" class="btn-primary"><i class="fa fa-search"></i></button>
+            <a class="button button2" asp-action="Index"><i class="fas fa-chevron-left"></i></a>
+        </p>
+    </form>
     <table class="table">
         <thead>
             <tr>
@@ -20,7 +28,7 @@
                     Contacto
                 </th>
                 <th>
-                    Data Parceria
+                    Data da Parceria
                 </th>
                 <th>
                     Email
@@ -69,14 +77,14 @@
                 if (p == Model.Pagination.CurrentPage)
                 {
                     <li class="page-item active"><a class="page-link" href="#">@p</a></li>
- }
+                }
                 else
                 {
-                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p">@p</a></li>
-}
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-name="@Model.SearchName">@p</a></li>
+                }
             }
 
-            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Última</a></li>
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages" asp-route-name="@Model.SearchName">Última</a></li>
         </ul>
     </nav>
 </header>

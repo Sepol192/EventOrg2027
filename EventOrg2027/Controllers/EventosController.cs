@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EventOrg2027.Data;
 using EventOrg2027.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Collections;
 
 namespace EventOrg2027.Controllers
 {
@@ -21,27 +22,39 @@ namespace EventOrg2027.Controllers
         }
 
 
-        // GET: Eventos 
-        public IActionResult Index(int page = 1)
+        // GET: Eventos   
+        public async Task<IActionResult> Index(string localEvento, string name = null, int page = 1)
         {
+
+            IQueryable<string> genreQuery = from m in _context.Eventos
+                                            orderby m.EventosId
+                                            select m.Localidade.NomeLocalidade;
+
             var pagination = new PagingInfo
 
             {
                 CurrentPage = page,
                 PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
-                TotalItems = _context.Eventos.Count()
+                TotalItems = _context.Eventos.Where(p => name == null 
+                || p.NomeEventos.Contains(name)
+                && p.Localidade.NomeLocalidade.Contains(localEvento)).Count()
             };
 
             return View(
-
                 new EventosListViewModel
                 {
-                    Eventos = _context.Eventos
-                    .OrderBy(p => p.NomeEventos)
+                    Eventos = _context.Eventos.Where(p => name == null 
+                    || p.NomeEventos.Contains(name) 
+                    && p.Localidade.NomeLocalidade.Contains(localEvento))         
+                    .OrderBy(p => p.HoraRealizacao)
                     .Skip((page - 1) * pagination.PageSize)
                     .Take(pagination.PageSize)
                     .Include(e => e.Localidade).Include(e => e.Organizador).Include(e => e.TipoEventos),
-                    Pagination = pagination
+
+                    Pagination = pagination,
+                    Localidades = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                    SearchName = name
+                    
                 }
             );
         }

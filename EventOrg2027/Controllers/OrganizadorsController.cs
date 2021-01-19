@@ -19,23 +19,26 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string name = null, int page = 1)
         {
             var pagination = new PagingInfo
             {
                 CurrentPage = page,
                 PageSize = PagingInfo.PAGE_SIZE_TABLE,
-                TotalItems = _context.Organizador.Count()
+                TotalItems = _context.Organizador.Where(p => name == null
+                || p.NomeOrganizador.Contains(name)).Count()
             };
 
             return View(
                 new OrganizadorListViewModel
                 {
-                    Organizadors = _context.Organizador
+                    Organizadors = _context.Organizador.Where(p => name == null
+                || p.NomeOrganizador.Contains(name))
                         .OrderBy(p => p.NomeOrganizador)
                         .Skip((page - 1) * pagination.PageSize)
                         .Take(pagination.PageSize),
-                    Pagination = pagination
+                    Pagination = pagination,
+                    SearchName = name
                 }
             );
         }
@@ -52,7 +55,8 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.OrganizadorId == id);
             if (organizador == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este organizador talvez tenha sido eliminado.";
+                return View("ViewINSUCESSO");
             }
 
             return View(organizador);
@@ -75,7 +79,8 @@ namespace EventOrg2027.Controllers
             {
                 _context.Add(organizador);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Este organizador foi criado com sucesso";
+                return View("ViewSUCESSO");
             }
             return View(organizador);
         }
@@ -91,7 +96,8 @@ namespace EventOrg2027.Controllers
             var organizador = await _context.Organizador.FindAsync(id);
             if (organizador == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este organizador talvez tenha sido eliminado.";
+                return View("ViewINSUCESSO");
             }
             return View(organizador);
         }
@@ -119,14 +125,18 @@ namespace EventOrg2027.Controllers
                 {
                     if (!OrganizadorExists(organizador.OrganizadorId))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Este organizador foi eliminado, pode inserir outro com as mesmas informações";
+                        return View("ViewINSUCESSO");
                     }
                     else
                     {
+                        ViewBag.Message = "Este organizador talvez tenha eliminado, tente novamente.";
+                        return View("ViewINSUCESSO");
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Este organizador foi editado com sucesso";
+                return View("ViewSUCESSO");
             }
             return View(organizador);
         }
@@ -143,7 +153,8 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.OrganizadorId == id);
             if (organizador == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este organizador talvez tenha sido eliminado";
+                return View("ViewINSUCESSO");
             }
 
             return View(organizador);
@@ -157,7 +168,8 @@ namespace EventOrg2027.Controllers
             var organizador = await _context.Organizador.FindAsync(id);
             _context.Organizador.Remove(organizador);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            ViewBag.Message = "Este organizador foi apagado com sucesso";
+            return View("ViewSUCESSO");
         }
 
         private bool OrganizadorExists(int id)
