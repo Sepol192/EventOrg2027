@@ -14,5 +14,6 @@ namespace EventOrg2027.Models
         public DbSet<TipoEventos> TiposEventos { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
         public DbSet<Organizador> Organizador { get; set; }
+        public DbSet<EventOrg2027.Models.Customer> Customer { get; set; }
     }
 }

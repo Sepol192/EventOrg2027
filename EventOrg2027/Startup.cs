@@ -66,7 +66,7 @@ namespace EventOrg2027
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, EventOrgDbContext db, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -108,7 +108,7 @@ namespace EventOrg2027
                     
 
                 }*/
-                
+                SeedData.SeedDevData(db);
                 SeedData.SeedDevUsersAsync(userManager).Wait();
 
             }
