@@ -5,51 +5,60 @@
 }
 
 <h1>Details</h1>
-
+ 
 <h4>.</h4>
 
-<div>
-
-    <h3 class="text-center">@Html.DisplayFor(model => model.NomeEventos)</h3>
+<div style="padding: 30px">
+    
+        <h3 class="text-center">@Html.DisplayFor(model => model.NomeEventos)</h3>
 
     <hr />
 
-    <div>
+    <div >
         <div>
-            @Html.DisplayFor(model => model.TipoEventos.NomeTipoEventos)
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+            <a asp-controller="TipoEventos" asp-action="Details" asp-route-id="@Model.TipoEventosId">
+                @Html.DisplayFor(model => model.TipoEventos.NomeTipoEventos)
+            </a>
         </div>
 
         <div>
-            @Html.DisplayFor(model => model.Localidade.NomeLocalidade) 
+            <i class="fa fa-map-signs" aria-hidden="true"></i>
+            <a asp-controller="Localidades" asp-action="Details" asp-route-id="@Model.LocalidadeId">
+                @Html.DisplayFor(model => model.Localidade.NomeLocalidade)
+            </a>
         </div>
 
         <div>
+            <i class="fa fa-users" aria-hidden="true"></i>
             Lotação @Html.DisplayFor(model => model.Lotacao)
         </div>
     </div>
 
     <hr />
-
-    <div>
-        Este evento irá ser realizado @Html.DisplayFor(model => model.DataRealizacao.ToString("dd-MM-yyyy"))
-
-        ás @Html.DisplayFor(model => model.HoraRealizacao)
-
-
-    </div>
-
-    <div>
-        @Html.DisplayFor(model => model.Descricao)
-    </div>
-
-    <hr />
-
-    <div>
-        Organizador @Html.DisplayFor(model => model.Organizador.NomeOrganizador)
-    </div>
-
-    <hr />
+        <div style="font-size: 1.5vw; margin-left:10px">
+            Descrição
+        </div>
+        <p>
+        </p>
         <div>
+            Este evento irá ser realizado @Html.DisplayFor(model => model.DataRealizacao)
+            ás @Html.DisplayFor(model => model.HoraRealizacao) horas.
+        </div>
+
+        <div>
+            @Html.DisplayFor(model => model.Descricao)
+        </div>
+    <hr />
+
+    <div>
+        Organizador <a asp-controller="Organizadors" asp-action="Details" asp-route-id="@Model.OrganizadorId">
+            @Html.DisplayFor(model => model.Organizador.NomeOrganizador)
+        </a>
+    </div>
+
+    <hr />
+        <div style="margin-left:20px">
             <p></p>
             <a asp-action="#" class="btn btn-primary" asp-route-id="@Model.EventosId">Registar Presença</a> 
             <p></p>
