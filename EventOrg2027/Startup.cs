@@ -101,13 +101,13 @@ namespace EventOrg2027
 
             if (env.IsDevelopment())
             {
-                /*using (var serviceScope = app.ApplicationServices.CreateScope())
+                using (var serviceScope = app.ApplicationServices.CreateScope())
                 {
                     var dbContext = serviceScope.ServiceProvider.GetService<EventOrgDbContext>();
                     SeedData.Populate(dbContext);
                     
 
-                }*/
+                }
                 SeedData.SeedDevData(db);
                 SeedData.SeedDevUsersAsync(userManager).Wait();
 

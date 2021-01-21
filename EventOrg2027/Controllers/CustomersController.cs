@@ -49,7 +49,6 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Customers/Create
-        [Authorize(Roles = "Admin")]
         public IActionResult Register()
         {
             return View();
