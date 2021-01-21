@@ -105,11 +105,9 @@ namespace EventOrg2027
                 {
                     var dbContext = serviceScope.ServiceProvider.GetService<EventOrgDbContext>();
                     SeedData.Populate(dbContext);
-                    
+                    SeedData.SeedDevUsersAsync(userManager).Wait();
 
                 }
-                SeedData.SeedDevData(db);
-                SeedData.SeedDevUsersAsync(userManager).Wait();
 
             }
 
