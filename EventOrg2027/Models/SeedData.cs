@@ -151,19 +151,19 @@ namespace EventOrg2027.Models
             }
         }
 
-        /*internal static async Task SeedDefaultAdminAsync(UserManager<IdentityUser> userManager)
+        internal static void SeedDevData(EventOrgDbContext db)
         {
-            IdentityUser user = await userManager.FindByNameAsync(DEFAULT_ADMIN_USER);
+            if (db.Customer.Any()) return;
 
-            if(user == null)
+            db.Customer.Add(new Customer
             {
-                user = new IdentityUser(DEFAULT_ADMIN_USER);
-                await userManager.CreateAsync(user, DEFAULT_ADMIN_PASSWORD);
-            }
+                Name = "Marcelo",
+                Email = "marcelo@ipg.pt"
+            });
 
-        }*/
+            db.SaveChanges();
+        }
 
-        
         internal static async Task SeedDefaultAdminAsync(UserManager<IdentityUser> userManager)
         {
             await EnsureUserIsCreated(userManager, DEFAULT_ADMIN_USER, DEFAULT_ADMIN_PASSWORD, ROLE_ADMINISTRATOR);
