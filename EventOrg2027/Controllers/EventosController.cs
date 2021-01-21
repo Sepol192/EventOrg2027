@@ -23,7 +23,7 @@ namespace EventOrg2027.Controllers
 
 
         // GET: Eventos   
-        public async Task<IActionResult> Index(string localEvento, string name = null, int page = 1)
+        public async Task<IActionResult> Index(string LocalEvento, string name = null, int page = 1)
         {
 
             IQueryable<string> genreQuery = from m in _context.Eventos
@@ -35,17 +35,18 @@ namespace EventOrg2027.Controllers
             {
                 CurrentPage = page,
                 PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
-                TotalItems = _context.Eventos.Where(p => name == null 
-                || p.NomeEventos.Contains(name)
-                && p.Localidade.NomeLocalidade.Contains(localEvento)).Count()
+                TotalItems = _context.Eventos.Where(p => (name == null
+                || p.NomeEventos.Contains(name))
+                && (LocalEvento == null || p.Localidade.NomeLocalidade == LocalEvento)).Count()
             };
 
             return View(
                 new EventosListViewModel
                 {
-                    Eventos = _context.Eventos.Where(p => name == null 
-                    || p.NomeEventos.Contains(name) 
-                    && p.Localidade.NomeLocalidade.Contains(localEvento))         
+                    Eventos = _context.Eventos.Where(p => (name == null
+                    || p.NomeEventos.Contains(name))
+                    && (LocalEvento == null || p.Localidade.NomeLocalidade == LocalEvento))
+
                     .OrderBy(p => p.HoraRealizacao)
                     .Skip((page - 1) * pagination.PageSize)
                     .Take(pagination.PageSize)
@@ -54,7 +55,7 @@ namespace EventOrg2027.Controllers
                     Pagination = pagination,
                     Localidades = new SelectList(await genreQuery.Distinct().ToListAsync()),
                     SearchName = name
-                    
+
                 }
             );
         }
