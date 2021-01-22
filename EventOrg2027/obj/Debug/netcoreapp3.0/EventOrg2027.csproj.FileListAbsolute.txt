@@ -361,7 +361,6 @@ C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Ra
 C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Shared\ViewINSUCESSO.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Shared\ViewINSUCESSO.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Shared\ViewSUCESSO.cshtml.g.cs
-C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csprojAssemblyReference.cache
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Customers\Delete.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Customers\Details.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Customers\Edit.cshtml.g.cs
@@ -372,3 +371,4 @@ C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Ra
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Customers\Edit.cshtml.g.cs
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Customers\Index.cshtml.g.cs
 C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Customers\Register.cshtml.g.cs
+C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csprojAssemblyReference.cache
