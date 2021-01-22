@@ -23,12 +23,20 @@ namespace EventOrg2027.Controllers
 
 
         // GET: Eventos   
-        public async Task<IActionResult> Index(string LocalEvento, string name = null, int page = 1)
+        public async Task<IActionResult> Index(string TipoEvento,string OrgEvento,string LocalEvento, string name = null, int page = 1)
         {
 
             IQueryable<string> genreQuery = from m in _context.Eventos
                                             orderby m.EventosId
                                             select m.Localidade.NomeLocalidade;
+
+            IQueryable<string> OrganizadorQuery = from m in _context.Eventos
+                                            orderby m.EventosId 
+                                            select m.Organizador.NomeOrganizador;
+
+            IQueryable<string> TipoEventoQuery = from m in _context.Eventos
+                                            orderby m.EventosId
+                                            select m.TipoEventos.NomeTipoEventos; 
 
             var pagination = new PagingInfo
 
@@ -37,7 +45,9 @@ namespace EventOrg2027.Controllers
                 PageSize = PagingInfo.DEFAULT_PAGE_SIZE,
                 TotalItems = _context.Eventos.Where(p => (name == null
                 || p.NomeEventos.Contains(name))
-                && (LocalEvento == null || p.Localidade.NomeLocalidade == LocalEvento)).Count()
+                && (LocalEvento == null || p.Localidade.NomeLocalidade == LocalEvento)
+                && (OrgEvento == null || p.Organizador.NomeOrganizador == OrgEvento)
+                &&(TipoEvento == null || p.TipoEventos.NomeTipoEventos == TipoEvento)).Count()
             };
 
             return View(
@@ -45,7 +55,9 @@ namespace EventOrg2027.Controllers
                 {
                     Eventos = _context.Eventos.Where(p => (name == null
                     || p.NomeEventos.Contains(name))
-                    && (LocalEvento == null || p.Localidade.NomeLocalidade == LocalEvento))
+                    && (LocalEvento == null || p.Localidade.NomeLocalidade == LocalEvento)
+                    && (OrgEvento == null || p.Organizador.NomeOrganizador == OrgEvento)
+                    && (TipoEvento == null || p.TipoEventos.NomeTipoEventos == TipoEvento))
 
                     .OrderBy(p => p.HoraRealizacao)
                     .Skip((page - 1) * pagination.PageSize)
@@ -54,6 +66,8 @@ namespace EventOrg2027.Controllers
 
                     Pagination = pagination,
                     Localidades = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                    Organizadores = new SelectList(await OrganizadorQuery.Distinct().ToListAsync()),
+                    TiposEventos = new SelectList(await TipoEventoQuery.Distinct().ToListAsync()),
                     SearchName = name
 
                 }

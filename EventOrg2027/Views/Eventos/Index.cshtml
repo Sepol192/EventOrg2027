@@ -13,8 +13,14 @@
     </p>
       
     <div>  
-        <form asp-controller="Eventos" asp-action="Index" method="get">
+        <form asp-controller="Eventos" asp-action="Index" method="get"> 
             <p>
+                <select asp-for="OrgEvento" asp-items="Model.Organizadores"> 
+                    <option value="">Organizador</option>
+                </select>
+                <select asp-for="TipoEvento" asp-items="Model.TiposEventos">
+                    <option value="">Tipo</option>
+                </select>
                 <select asp-for="LocalEvento" asp-items="Model.Localidades">
                     <option value="">Localidades</option>
                 </select>
