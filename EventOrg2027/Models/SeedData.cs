@@ -16,7 +16,7 @@ namespace EventOrg2027.Models
 
         internal static void Populate(EventOrgDbContext dbContext)
         {
-            PopulateEvents(dbContext);
+            //PopulateEvents(dbContext);
             PopulateLocalidade(dbContext);
             PopulateOrganizador(dbContext);
             PopulateTiposEventos(dbContext);
@@ -60,6 +60,19 @@ namespace EventOrg2027.Models
         internal static async Task SeedDevUsersAsync(UserManager<IdentityUser> userManager)
         {
             await EnsureUserIsCreated(userManager, "marcelo@ipg.pt", "Marcelo123", ROLE_CUSTOMER);
+        }
+
+        internal static void SeedDevData(EventOrgDbContext db)
+        {
+            if (db.Customer.Any()) return;
+
+            db.Customer.Add(new Customer
+            {
+                Name = "Mary",
+                Email = "mary@ipg.pt"
+            });
+
+            db.SaveChanges();
         }
 
         private static void PopulateLocalidade(EventOrgDbContext dbContext)
@@ -151,7 +164,7 @@ namespace EventOrg2027.Models
                  dbContext.SaveChanges();
         }
 
-        private static void PopulateEvents(EventOrgDbContext dbContext)
+        /*private static void PopulateEvents(EventOrgDbContext dbContext)
         {
             int LocalidadeId = (from d in dbContext.Localidade where d.NomeLocalidade == "Guarda" select d.LocalidadeId).First();
             int LocalidadeId2 = (from d in dbContext.Localidade where d.NomeLocalidade == "Seia" select d.LocalidadeId).First();
@@ -203,20 +216,10 @@ namespace EventOrg2027.Models
                     TipoEventosId = TipoEventosId3
                 });
                 dbContext.SaveChanges();
-            }
+            }*/
         
 
-        /*internal static async Task SeedDefaultAdminAsync(UserManager<IdentityUser> userManager)
-        {
-            IdentityUser user = await userManager.FindByNameAsync(DEFAULT_ADMIN_USER);
-
-            if(user == null)
-            {
-                user = new IdentityUser(DEFAULT_ADMIN_USER);
-                await userManager.CreateAsync(user, DEFAULT_ADMIN_PASSWORD);
-            }
-
-        }*/
+        
 
         
 
