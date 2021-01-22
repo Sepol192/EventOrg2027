@@ -26,7 +26,7 @@ namespace EventOrg2027.Models
 
         [Required(ErrorMessage = "Por favor, introduza a Data de Realização")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DataRealizacao { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza a Hora de Realização")]

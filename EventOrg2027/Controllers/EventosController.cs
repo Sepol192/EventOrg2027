@@ -82,6 +82,7 @@ namespace EventOrg2027.Controllers
                 return NotFound();
             }
 
+
             var eventos = await _context.Eventos
                 .Include(e => e.Localidade)
                 .Include(e => e.Organizador)

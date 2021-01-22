@@ -42,9 +42,22 @@
         <p>
         </p>
         <div>
-            Este evento irá ser realizado @Html.DisplayFor(model => model.DataRealizacao)
+            @if( @DateTime.Now < Model.DataRealizacao) { 
+            <a>
+                Este evento irá ser realizado @Html.DisplayFor(model => model.DataRealizacao)
+                ás @Html.DisplayFor(model => model.HoraRealizacao) horas.
+            </a>
+            } else {
+        <a>
+            Este evento foi realizado @Html.DisplayFor(model => model.DataRealizacao)
             ás @Html.DisplayFor(model => model.HoraRealizacao) horas.
+        </a>
+            }
+
         </div>
+    <p>
+
+    </p>
 
         <div>
             @Html.DisplayFor(model => model.Descricao)
