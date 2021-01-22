@@ -16,10 +16,12 @@ namespace EventOrg2027.Models
 
         internal static void Populate(EventOrgDbContext dbContext)
         {
-            //PopulateEvents(dbContext);
+            PopulateEvents(dbContext);
             PopulateLocalidade(dbContext);
             PopulateOrganizador(dbContext);
             PopulateTiposEventos(dbContext);
+            SeedDevData(dbContext);
+
         }
         internal static async Task SeedDefaultAdminAsync(UserManager<IdentityUser> userManager)
         {
@@ -62,17 +64,17 @@ namespace EventOrg2027.Models
             await EnsureUserIsCreated(userManager, "marcelo@ipg.pt", "Marcelo123", ROLE_CUSTOMER);
         }
 
-        internal static void SeedDevData(EventOrgDbContext db)
+        internal static void SeedDevData(EventOrgDbContext dbContext)
         {
-            if (db.Customer.Any()) return;
-
-            db.Customer.Add(new Customer
+            if (dbContext.Customer.Any()) return;
+             
+            dbContext.Customer.Add(new Customer
             {
                 Name = "Mary",
                 Email = "mary@ipg.pt"
             });
 
-            db.SaveChanges();
+            dbContext.SaveChanges();
         }
 
         private static void PopulateLocalidade(EventOrgDbContext dbContext)
@@ -164,7 +166,7 @@ namespace EventOrg2027.Models
                  dbContext.SaveChanges();
         }
 
-        /*private static void PopulateEvents(EventOrgDbContext dbContext)
+        private static void PopulateEvents(EventOrgDbContext dbContext)
         {
             int LocalidadeId = (from d in dbContext.Localidade where d.NomeLocalidade == "Guarda" select d.LocalidadeId).First();
             int LocalidadeId2 = (from d in dbContext.Localidade where d.NomeLocalidade == "Seia" select d.LocalidadeId).First();
@@ -216,7 +218,7 @@ namespace EventOrg2027.Models
                     TipoEventosId = TipoEventosId3
                 });
                 dbContext.SaveChanges();
-            }*/
+            }
         
 
         
