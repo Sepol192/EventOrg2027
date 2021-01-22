@@ -70,8 +70,8 @@ namespace EventOrg2027.Models
              
             dbContext.Customer.Add(new Customer
             {
-                Name = "Mary",
-                Email = "mary@ipg.pt"
+                Name = "Marcelo",
+                Email = "marcelo@ipg.pt"
             });
 
             dbContext.SaveChanges();
