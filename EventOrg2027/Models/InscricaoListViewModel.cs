@@ -8,7 +8,7 @@ namespace EventOrg2027.Models
     public class InscricaoListViewModel
     {
         public IEnumerable<Inscricao> inscricaos { get; set; }
-         
+        public string SearchName { get; set; }
         public PagingInfo Pagination { get; set; }
     }
 }

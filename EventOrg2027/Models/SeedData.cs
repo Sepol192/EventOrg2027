@@ -200,7 +200,7 @@ namespace EventOrg2027.Models
                 {
                     NomeEventos = "Classic Cars Tour em junho",
                     Descricao = "A exemplo do que sucedeu em 2019, ano da primeira edição, o Classic Cars Tour volta a dividir-se numa prova de regularidade e num passeio com os participantes a escolherem a opção em que querem participar. Centrado no Longroiva Hotel &Termal SPA, o Classic Cars Tour terá um percurso que passará pelo território dos seis concelhos envolvidos, aí realizando paragens, visitas ou refeições. Será mais uma oportunidade, com a chancela de qualidade do Clube Escape Livre, para participantes oriundos de todo o país, e também da vizinha Espanha, conhecerem as belas paisagens, o património e a excelente gastronomia da região.",
-                    DataRealizacao = new DateTime(2020, 6, 25),
+                    DataRealizacao = new DateTime(2021, 6, 25),
                     HoraRealizacao = new DateTime(2020,2,20,16,00,0),
                     Lotacao = 50,
                     LocalidadeId = LocalidadeId2,

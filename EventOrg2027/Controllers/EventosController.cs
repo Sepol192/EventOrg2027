@@ -20,48 +20,26 @@ namespace EventOrg2027.Controllers
         {
             this._context = _context;
         }
-        /*
-      public ActionResult Reserva(string eventosIDs)
-      {
-
-          if (!string.IsNullOrEmpty(eventosIDs))
-          {
-              var productQuantities = eventosIDs.Split('-').Select(x => int.Parse(x)).ToList();
-
-            //  var boughtProducts = ProductsService.Instance.GetProducts(productQuantities.Distinct().ToList());
-
-              Inscricao newOrder = new Inscricao();
-              newOrder.UserID = User.Identity.Name;
-              newOrder.DataInscricao = DateTime.Now;
-
-
-
-              newOrder.ItemEventos = new List<InscricaoEvento>();
-          //    newOrder.ItemEventos.AddRange(boughtProducts.Select(x => new InscricaoEvento() { EventoID = x.ID }));
-
-           //   var rowsEffected = ShopService.Instance.SaveOrder(newOrder);
-
-              _context.Inscricao.Add(newOrder);
-
-          return View();
-      }*/   
-        public IActionResult Reservas()
+  
+        public IActionResult Reservas(string name = null,int page = 1)
         {
 
             var pagination = new PagingInfo
             {
+                CurrentPage = page,
                 PageSize = PagingInfo.PAGE_SIZE_TABLE,
-                TotalItems = _context.Localidade.Count()
+                TotalItems = _context.Inscricao.Where(x => x.UserID == User.Identity.Name && (name == null || x.EventoNome.Contains(name))).Count()
             };
             return View(
             new InscricaoListViewModel
             {
-                inscricaos = _context.Inscricao.Where(x => x.UserID == User.Identity.Name)
-                    .OrderBy(p => p.DataInscricao)
+                inscricaos = _context.Inscricao.Where(x => x.UserID == User.Identity.Name && (name == null || x.EventoNome.Contains(name)))
+                    .OrderByDescending(p => p.DataInscricao)
+                    .Skip((page - 1) * pagination.PageSize)
                     .Take(pagination.PageSize),
                      Pagination = pagination
-    }
-);
+                }
+            );
         }
 
 
@@ -150,7 +128,7 @@ namespace EventOrg2027.Controllers
                     && (OrgEvento == null || p.Organizador.NomeOrganizador == OrgEvento)
                     && (TipoEvento == null || p.TipoEventos.NomeTipoEventos == TipoEvento))
 
-                    .OrderBy(p => p.HoraRealizacao)
+                    .OrderByDescending(p => p.DataRealizacao)
                     .Skip((page - 1) * pagination.PageSize)
                     .Take(pagination.PageSize)
                     .Include(e => e.Localidade).Include(e => e.Organizador).Include(e => e.TipoEventos),
