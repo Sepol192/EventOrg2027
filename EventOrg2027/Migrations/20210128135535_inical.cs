@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EventOrg2027.Migrations
 {
-    public partial class inicial : Migration
+    public partial class inical : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -110,8 +110,11 @@ namespace EventOrg2027.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DataInscricao = table.Column<DateTime>(nullable: false),
+                    DataRealizacao = table.Column<DateTime>(nullable: false),
+                    HoraRealizacao = table.Column<DateTime>(nullable: false),
                     UserID = table.Column<string>(nullable: true),
                     EventoID = table.Column<int>(nullable: false),
+                    EventoNome = table.Column<string>(nullable: true),
                     EventosId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

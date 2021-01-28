@@ -44,23 +44,72 @@ namespace EventOrg2027.Controllers
               _context.Inscricao.Add(newOrder);
 
           return View();
-      }*/  
+      }*/   
+        public IActionResult Reservas()
+        {
+
+            var pagination = new PagingInfo
+            {
+                PageSize = PagingInfo.PAGE_SIZE_TABLE,
+                TotalItems = _context.Localidade.Count()
+            };
+            return View(
+            new InscricaoListViewModel
+            {
+                inscricaos = _context.Inscricao.Where(x => x.UserID == User.Identity.Name)
+                    .OrderBy(p => p.DataInscricao)
+                    .Take(pagination.PageSize),
+                     Pagination = pagination
+    }
+);
+        }
+
+
         public IActionResult Reserva(int id) {
-            
 
             var evento = _context.Eventos.Where(m => m.EventosId == id).FirstOrDefault();
+            var p = _context.Inscricao.Where(X => (X.UserID.Contains(User.Identity.Name) && X.EventoID == id)).Count();
 
+            var lotacao = _context.Eventos.Where(x => x.EventosId == id).Select(x => x.Lotacao).FirstOrDefault();
+            var totalinscritos = _context.Inscricao.Where(x => x.EventoID == id).Count();
+
+            var data = _context.Eventos.Where(x => x.EventosId == id).Select(x => x.DataRealizacao).FirstOrDefault();
+
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            if ( p == 1 )
+            {
+                ViewBag.Message = "Utilizador já inscrito neste evento.";
+                return View("ViewINSUCESSO");
+            } else if (totalinscritos > lotacao - 1)
+            {
+                ViewBag.Message = "Inscrição excedeu o número máximo de reservas.";
+                return View("ViewINSUCESSO");
+            } else if (data < DateTime.Now)
+            {
+                ViewBag.Message = "Este evento já ocorreu.";
+                return View("ViewINSUCESSO");
+            }
+            else { 
             Inscricao inscricao = new Inscricao();
             inscricao.DataInscricao = DateTime.Now;
             inscricao.UserID = User.Identity.Name;
             inscricao.EventoID = id;
+            inscricao.EventoNome = _context.Eventos.Where(x => x.EventosId == id).Select(x => x.NomeEventos).FirstOrDefault();
+            inscricao.DataRealizacao = _context.Eventos.Where(x => x.EventosId == id).Select(x => x.DataRealizacao).FirstOrDefault();
+            inscricao.HoraRealizacao = _context.Eventos.Where(x => x.EventosId == id).Select(x => x.HoraRealizacao).FirstOrDefault();
             inscricao.Eventos = evento;
             _context.Inscricao.Add(inscricao);
             _context.SaveChanges(); 
-            var idEvento = inscricao.ID;   
-             
-
-            return View(evento);
+            var idEvento = inscricao.ID;
+            
+            }
+            ViewBag.Message = "Utilizador inscrito.";
+            return View("ViewSUCESSO");
+            
         }
 
 

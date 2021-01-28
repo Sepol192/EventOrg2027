@@ -74,11 +74,7 @@
 
     <hr />
     <div style="margin-left:20px">
-        <div style="font-size: 1.5vw; margin-left:10px">
-            / @Html.DisplayFor(model => model.Lotacao)
-        </div>
         <p></p>
-        
             @if (User.Identity.IsAuthenticated == false)
             {
                 <p><a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary">Registar Presença</a></p>
@@ -97,17 +93,5 @@
     </div>
 
 </div>
- 
 
-@section Scripts{
-    <script>
-    $("#reserva").click(function () {
-        $.ajax({
-            url: '@Url.Action("Reserva", "Eventos")',
-            data: {
-                idEvento: '@string.Join("-", Model.EventosId)'
-            }
-        });
-    </script>
-}
 } 

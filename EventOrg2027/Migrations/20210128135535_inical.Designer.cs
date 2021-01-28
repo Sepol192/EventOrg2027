@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventOrg2027.Migrations
 {
     [DbContext(typeof(EventOrgDbContext))]
-    [Migration("20210128081833_inicial")]
-    partial class inicial
+    [Migration("20210128135535_inical")]
+    partial class inical
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,11 +99,20 @@ namespace EventOrg2027.Migrations
                     b.Property<DateTime>("DataInscricao")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DataRealizacao")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("EventoID")
                         .HasColumnType("int");
 
+                    b.Property<string>("EventoNome")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("EventosId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("HoraRealizacao")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");

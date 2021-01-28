@@ -1,0 +1,48 @@
+﻿@model InscricaoListViewModel
+@{
+    ViewData["Title"] = "Lista De Inscrições";
+}
+<header class="masthead2 text-center">
+
+    <h1>@ViewBag.Title </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nome do Evento
+                </th>
+                <th>
+                    Data de Realização
+                </th>
+                <th>
+                    Hora
+                </th>
+                <th>
+                    Inscrição
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.inscricaos)
+            {
+            <tr>
+                <td>
+                    @item.EventoNome
+                </td>
+                <td>
+                    @item.DataRealizacao.ToString("dd-MM-yyyy")
+                </td>
+                <td>
+                    @item.HoraRealizacao.ToString("hh\\:mm")
+                </td>
+                <th>
+                    @item.DataInscricao
+                </th>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</header>

@@ -10,8 +10,11 @@ namespace EventOrg2027.Models
     {
         public int ID { get; set;  } 
         public DateTime DataInscricao { get; set; }
+        public DateTime DataRealizacao { get; set; }
+        public DateTime HoraRealizacao { get; set; }
         public string UserID { get; set; }
         public int EventoID { get; set; }
+        public string EventoNome { get; set; }
         public virtual Eventos Eventos { get; set; }
 
 

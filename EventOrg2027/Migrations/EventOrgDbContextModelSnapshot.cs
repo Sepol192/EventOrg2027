@@ -97,11 +97,20 @@ namespace EventOrg2027.Migrations
                     b.Property<DateTime>("DataInscricao")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DataRealizacao")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("EventoID")
                         .HasColumnType("int");
 
+                    b.Property<string>("EventoNome")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("EventosId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("HoraRealizacao")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");

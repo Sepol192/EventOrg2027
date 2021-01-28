@@ -19,8 +19,6 @@ namespace EventOrg2027.Models
         public SelectList TiposEventos { get; set; } 
         public SelectList Organizadores { get; set; } 
 
-        public string evento_nome { get; set; } 
-        public int EventoCount { get; set; }
 
 
     }
