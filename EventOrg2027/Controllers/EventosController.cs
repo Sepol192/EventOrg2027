@@ -20,6 +20,48 @@ namespace EventOrg2027.Controllers
         {
             this._context = _context;
         }
+        /*
+      public ActionResult Reserva(string eventosIDs)
+      {
+
+          if (!string.IsNullOrEmpty(eventosIDs))
+          {
+              var productQuantities = eventosIDs.Split('-').Select(x => int.Parse(x)).ToList();
+
+            //  var boughtProducts = ProductsService.Instance.GetProducts(productQuantities.Distinct().ToList());
+
+              Inscricao newOrder = new Inscricao();
+              newOrder.UserID = User.Identity.Name;
+              newOrder.DataInscricao = DateTime.Now;
+
+
+
+              newOrder.ItemEventos = new List<InscricaoEvento>();
+          //    newOrder.ItemEventos.AddRange(boughtProducts.Select(x => new InscricaoEvento() { EventoID = x.ID }));
+
+           //   var rowsEffected = ShopService.Instance.SaveOrder(newOrder);
+
+              _context.Inscricao.Add(newOrder);
+
+          return View();
+      }*/  
+        public IActionResult Reserva(int id) {
+            
+
+            var evento = _context.Eventos.Where(m => m.EventosId == id).FirstOrDefault();
+
+            Inscricao inscricao = new Inscricao();
+            inscricao.DataInscricao = DateTime.Now;
+            inscricao.UserID = User.Identity.Name;
+            inscricao.EventoID = id;
+            inscricao.Eventos = evento;
+            _context.Inscricao.Add(inscricao);
+            _context.SaveChanges(); 
+            var idEvento = inscricao.ID;   
+             
+
+            return View(evento);
+        }
 
 
         // GET: Eventos   
@@ -81,6 +123,7 @@ namespace EventOrg2027.Controllers
             {
                 return NotFound();
             }
+
 
             var eventos = await _context.Eventos
                 .Include(e => e.Localidade)

@@ -38,7 +38,8 @@
         </dd>
         <form asp-action="Delete">
             <input type="hidden" asp-for="OrganizadorId" />
-            <input type="submit" value="Apagar" class="btn btn-danger" /> |
+            <input type="submit" value="Apagar" class="btn btn-danger" 
+                   onclick="return confirm('Deseja eliminar o evento: @Model.NomeOrganizador')"/>
             <p></p>
             <p><a asp-action="Index" class="btn btn-dark">Voltar para a lista</a></p>
         </form>

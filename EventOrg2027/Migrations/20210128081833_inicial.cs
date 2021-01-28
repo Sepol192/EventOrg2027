@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EventOrg2027.Migrations
 {
-    public partial class init : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -103,6 +103,28 @@ namespace EventOrg2027.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Inscricao",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DataInscricao = table.Column<DateTime>(nullable: false),
+                    UserID = table.Column<string>(nullable: true),
+                    EventoID = table.Column<int>(nullable: false),
+                    EventosId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Inscricao", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Inscricao_Eventos_EventosId",
+                        column: x => x.EventosId,
+                        principalTable: "Eventos",
+                        principalColumn: "EventosId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Eventos_LocalidadeId",
                 table: "Eventos",
@@ -117,12 +139,20 @@ namespace EventOrg2027.Migrations
                 name: "IX_Eventos_TipoEventosId",
                 table: "Eventos",
                 column: "TipoEventosId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Inscricao_EventosId",
+                table: "Inscricao",
+                column: "EventosId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Customer");
+
+            migrationBuilder.DropTable(
+                name: "Inscricao");
 
             migrationBuilder.DropTable(
                 name: "Eventos");

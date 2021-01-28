@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventOrg2027.Migrations
 {
     [DbContext(typeof(EventOrgDbContext))]
-    [Migration("20210122094952_init")]
-    partial class init
+    [Migration("20210128081833_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,6 +87,32 @@ namespace EventOrg2027.Migrations
                     b.HasIndex("TipoEventosId");
 
                     b.ToTable("Eventos");
+                });
+
+            modelBuilder.Entity("EventOrg2027.Models.Inscricao", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataInscricao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventoID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EventosId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("EventosId");
+
+                    b.ToTable("Inscricao");
                 });
 
             modelBuilder.Entity("EventOrg2027.Models.Localidade", b =>
@@ -178,6 +204,13 @@ namespace EventOrg2027.Migrations
                         .HasForeignKey("TipoEventosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EventOrg2027.Models.Inscricao", b =>
+                {
+                    b.HasOne("EventOrg2027.Models.Eventos", "Eventos")
+                        .WithMany()
+                        .HasForeignKey("EventosId");
                 });
 #pragma warning restore 612, 618
         }

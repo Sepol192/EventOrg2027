@@ -1,20 +1,19 @@
 ﻿@model EventOrg2027.Models.Eventos
-
 @{
     ViewData["Title"] = "Details";
 }
 
 <h1>Details</h1>
- 
+
 <h4>.</h4>
 
 <div style="padding: 30px">
-    
-        <h3 class="text-center">@Html.DisplayFor(model => model.NomeEventos)</h3>
+
+    <h3 class="text-center">@Html.DisplayFor(model => model.NomeEventos)</h3>
 
     <hr />
 
-    <div >
+    <div>
         <div>
             <i class="fa fa-bookmark" aria-hidden="true"></i>
             <a asp-controller="TipoEventos" asp-action="Details" asp-route-id="@Model.TipoEventosId">
@@ -36,19 +35,35 @@
     </div>
 
     <hr />
-        <div style="font-size: 1.5vw; margin-left:10px">
-            Descrição
-        </div>
-        <p>
-        </p>
-        <div>
-            Este evento irá ser realizado @Html.DisplayFor(model => model.DataRealizacao)
-            ás @Html.DisplayFor(model => model.HoraRealizacao) horas.
-        </div>
+    <div style="font-size: 1.5vw; margin-left:10px">
+        Descrição
+    </div>
+    <p>
+    </p>
+    <div>
+        @if (@DateTime.Now < Model.DataRealizacao)
+        {
+            <a>
+                Este evento irá ser realizado @Html.DisplayFor(model => model.DataRealizacao)
+                ás @Html.DisplayFor(model => model.HoraRealizacao) horas.
+            </a>
+        }
+        else
+        {
+            <a>
+                Este evento foi realizado @Html.DisplayFor(model => model.DataRealizacao)
+                ás @Html.DisplayFor(model => model.HoraRealizacao) horas.
+            </a>
+        }
 
-        <div>
-            @Html.DisplayFor(model => model.Descricao)
-        </div>
+    </div>
+    <p>
+
+    </p>
+
+    <div>
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
     <hr />
 
     <div>
@@ -58,11 +73,41 @@
     </div>
 
     <hr />
-        <div style="margin-left:20px">
-            <p></p>
-            <a asp-action="#" class="btn btn-primary" asp-route-id="@Model.EventosId">Registar Presença</a> 
-            <p></p>
-            <p><a asp-action="Index" class="btn btn-dark">Voltar para a lista</a></p>
+    <div style="margin-left:20px">
+        <div style="font-size: 1.5vw; margin-left:10px">
+            / @Html.DisplayFor(model => model.Lotacao)
         </div>
-    
+        <p></p>
+        
+            @if (User.Identity.IsAuthenticated == false)
+            {
+                <p><a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary">Registar Presença</a></p>
+            }
+            else {
+            <a asp-action="Reserva" asp-route-id="@Model.EventosId">
+                <buton class="btn btn-primary " type="submit">Registar Presença</buton>
+            </a>
+            } 
+        
+        <p></p>
+        <p><a asp-action="Index" class="btn btn-dark">Voltar para a lista</a></p>
+
+
+
+    </div>
+
 </div>
+ 
+
+@section Scripts{
+    <script>
+    $("#reserva").click(function () {
+        $.ajax({
+            url: '@Url.Action("Reserva", "Eventos")',
+            data: {
+                idEvento: '@string.Join("-", Model.EventosId)'
+            }
+        });
+    </script>
+}
+} 

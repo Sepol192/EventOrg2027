@@ -21,7 +21,7 @@ namespace EventOrg2027.Models
 
         [Required(ErrorMessage = "Por favor, introduza a Data de Nascimento")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza o Email")]

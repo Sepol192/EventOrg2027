@@ -16,10 +16,11 @@ namespace EventOrg2027.Models
 
         internal static void Populate(EventOrgDbContext dbContext)
         {
-            PopulateEvents(dbContext);
+            
             PopulateLocalidade(dbContext);
             PopulateOrganizador(dbContext);
             PopulateTiposEventos(dbContext);
+            PopulateEvents(dbContext);
             SeedDevData(dbContext);
 
         }

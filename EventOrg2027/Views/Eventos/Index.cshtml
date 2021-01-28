@@ -11,7 +11,7 @@
     <p>
         <a asp-action="Create" style="font-size: 1vw">Criar Novo</a>
     </p>
-      
+
     <div>  
         <form asp-controller="Eventos" asp-action="Index" method="get"> 
             <p>
@@ -19,16 +19,16 @@
                     <option value="">Organizador</option>
                 </select>
                 <select asp-for="TipoEvento" asp-items="Model.TiposEventos">
-                    <option value="">Tipo</option>
+                    <option value="">Categoria</option>
                 </select>
                 <select asp-for="LocalEvento" asp-items="Model.Localidades">
-                    <option value="">Localidades</option>
+                    <option value="">Localidade</option>
                 </select>
 
                 <input type="search" name="name" placeholder="Procurar por nome" value="@Model.SearchName" />
                 <input name="page" type="hidden" value="1" />
                 <button type="submit" value="Search" class="btn-primary"><i class="fa fa-search"></i></button>
-                <a class="button button2" asp-action="Index"><i class="fas fa-chevron-left"></i></a>
+                <a class="button button2" asp-action="Reserva"><i class="fas fa-chevron-left"></i></a>
             </p>
 </form>
 
