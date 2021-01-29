@@ -22,7 +22,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Localidades
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string name = null, int page = 1)
         {
             var pagination = new PagingInfo
             {
@@ -34,11 +34,13 @@ namespace EventOrg2027.Controllers
             return View(
                 new LocalidadesListViewModel
                 {
-                    Localidades = _context.Localidade
+                    Localidades = _context.Localidade.Where(p => name == null
+                || p.NomeLocalidade.Contains(name))
                         .OrderBy(p => p.NomeLocalidade)
                         .Skip((page - 1) * pagination.PageSize)
                         .Take(pagination.PageSize),
-                    Pagination = pagination
+                    Pagination = pagination,
+                    SearchName = name
                 }
             );
         }

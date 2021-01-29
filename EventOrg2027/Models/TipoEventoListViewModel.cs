@@ -9,5 +9,6 @@ namespace EventOrg2027.Models
     {
         public IEnumerable<TipoEventos> TipoEventos { get; set; }
         public PagingInfo Pagination { get; set; }
+        public string SearchName { get; set; }
     } 
 }

@@ -11,5 +11,6 @@ namespace EventOrg2027.Models
 
         public PagingInfo Pagination { get; set; }
 
+        public string SearchName { get; set; }
     }
 }
