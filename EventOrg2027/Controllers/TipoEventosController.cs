@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EventOrg2027.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EventOrg2027.Controllers
 {
@@ -22,6 +23,7 @@ namespace EventOrg2027.Controllers
 
 
         // GET: TipoEventos
+        [Authorize(Roles = "Admin")]
         public IActionResult Index(string name = null, int page = 1)
         {
             var pagination = new PagingInfo
@@ -46,6 +48,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: TipoEventos/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -65,6 +68,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: TipoEventos/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -75,6 +79,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("TipoEventosId,NomeTipoEventos")] TipoEventos tipoEventos)
         {
             if (ModelState.IsValid) 
@@ -88,6 +93,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: TipoEventos/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -109,6 +115,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("TipoEventosId,NomeTipoEventos")] TipoEventos tipoEventos)
         {
             if (id != tipoEventos.TipoEventosId)
@@ -144,6 +151,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: TipoEventos/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -165,6 +173,7 @@ namespace EventOrg2027.Controllers
         // POST: TipoEventos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var tipoEventos = await _context.TiposEventos.FindAsync(id);
