@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EventOrg2027.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EventOrg2027.Controllers
 {
@@ -22,7 +23,8 @@ namespace EventOrg2027.Controllers
 
 
         // GET: TipoEventos
-        public IActionResult Index(int page = 1)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Index(string name = null, int page = 1)
         {
             var pagination = new PagingInfo
             {
@@ -34,16 +36,19 @@ namespace EventOrg2027.Controllers
             return View(
                 new TipoEventoListViewModel
                 {
-                    TipoEventos = _context.TiposEventos
+                    TipoEventos = _context.TiposEventos.Where(p => name == null
+                || p.NomeTipoEventos.Contains(name))
                         .OrderBy(p => p.NomeTipoEventos)
                         .Skip((page - 1) * pagination.PageSize)
                         .Take(pagination.PageSize),
-                    Pagination = pagination
+                    Pagination = pagination,
+                    SearchName = name
                 }
             );
         }
 
         // GET: TipoEventos/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,13 +60,15 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.TipoEventosId == id);
             if (tipoEventos == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este tipo de evento talvez tenha sido eliminado.";
+                return View("ViewINSUCESSO");
             }
 
             return View(tipoEventos);
         }
 
         // GET: TipoEventos/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -72,18 +79,21 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("TipoEventosId,NomeTipoEventos")] TipoEventos tipoEventos)
         {
             if (ModelState.IsValid) 
             {
                 _context.Add(tipoEventos);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Este tipo de evento foi criado com sucesso";
+                return View("ViewSUCESSO");
             }
             return View(tipoEventos);
         }
 
         // GET: TipoEventos/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,7 +104,8 @@ namespace EventOrg2027.Controllers
             var tipoEventos = await _context.TiposEventos.FindAsync(id);
             if (tipoEventos == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este tipo de evento talvez tenha sido eliminado.";
+                return View("ViewINSUCESSO");
             }
             return View(tipoEventos);
         }
@@ -104,6 +115,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("TipoEventosId,NomeTipoEventos")] TipoEventos tipoEventos)
         {
             if (id != tipoEventos.TipoEventosId)
@@ -122,19 +134,24 @@ namespace EventOrg2027.Controllers
                 {
                     if (!TipoEventosExists(tipoEventos.TipoEventosId))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Este tipo de evento foi eliminado, pode inserir outro com as mesmas informações";
+                        return View("ViewINSUCESSO");
                     }
                     else
                     {
+                        ViewBag.Message = "Este tipo de evento talvez tenha eliminado, tente novamente.";
+                        return View("ViewINSUCESSO");
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Este tipo de evento foi editado com sucesso";
+                return View("ViewSUCESSO");
             }
             return View(tipoEventos);
         }
 
         // GET: TipoEventos/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,7 +163,8 @@ namespace EventOrg2027.Controllers
                 .FirstOrDefaultAsync(m => m.TipoEventosId == id);
             if (tipoEventos == null)
             {
-                return NotFound();
+                ViewBag.Message = "Este tipo de evento talvez tenha sido eliminado.";
+                return View("ViewINSUCESSO");
             }
 
             return View(tipoEventos);
@@ -155,12 +173,14 @@ namespace EventOrg2027.Controllers
         // POST: TipoEventos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var tipoEventos = await _context.TiposEventos.FindAsync(id);
             _context.TiposEventos.Remove(tipoEventos);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            ViewBag.Message = "Este tipo de evento foi apagado com sucesso";
+            return View("ViewSUCESSO");
         }
 
         private bool TipoEventosExists(int id)

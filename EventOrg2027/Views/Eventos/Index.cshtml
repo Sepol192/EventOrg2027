@@ -8,94 +8,98 @@
 
     <h1>@ViewBag.Title </h1>
 
-    <p>
-        <a asp-action="Create" style="font-size: 1vw">Criar Novo</a>
-    </p>
+    @if (User.IsInRole("Admin"))
+    {
+        <p>
+            <a asp-action="Create" style="font-size: 1vw">Criar Novo</a>
+        </p>
+    }
+        <div>
+            <form asp-controller="Eventos" asp-action="Index" method="get">
+                <p>
+                    <select asp-for="OrgEvento" asp-items="Model.Organizadores">
+                        <option value="">Organizador</option>
+                    </select>
+                    <select asp-for="TipoEvento" asp-items="Model.TiposEventos">
+                        <option value="">Categoria</option>
+                    </select>
+                    <select asp-for="LocalEvento" asp-items="Model.Localidades">
+                        <option value="">Localidade</option>
+                    </select>
 
-    <div>  
-        <form asp-controller="Eventos" asp-action="Index" method="get"> 
-            <p>
-                <select asp-for="OrgEvento" asp-items="Model.Organizadores"> 
-                    <option value="">Organizador</option>
-                </select>
-                <select asp-for="TipoEvento" asp-items="Model.TiposEventos">
-                    <option value="">Categoria</option>
-                </select>
-                <select asp-for="LocalEvento" asp-items="Model.Localidades">
-                    <option value="">Localidade</option>
-                </select>
+                    <input type="search" name="name" placeholder="Procurar por nome" value="@Model.SearchName" />
+                    <input name="page" type="hidden" value="1" />
+                    <button type="submit" value="Search" class="btn-primary"><i class="fa fa-search"></i></button>
+                    <a class="button button2" asp-action="Reserva"><i class="fas fa-chevron-left"></i></a>
+                </p>
+            </form>
 
-                <input type="search" name="name" placeholder="Procurar por nome" value="@Model.SearchName" />
-                <input name="page" type="hidden" value="1" />
-                <button type="submit" value="Search" class="btn-primary"><i class="fa fa-search"></i></button>
-                <a class="button button2" asp-action="Reserva"><i class="fas fa-chevron-left"></i></a>
-            </p>
-</form>
+        </div>
 
-    </div>
+        <div class="cardeventos-body" style="margin-top:15px">
 
-    <div class="cardeventos-body" style="margin-top:15px">
+            @foreach (var p in Model.Eventos)
 
-        @foreach (var p in Model.Eventos)
+            {
 
-        {
-
-            <div class="cardeventos">
-                <div class="card-body">
-                    <h5 class="card-title" style="font-size: 1.5vw">@p.NomeEventos</h5>
-                    <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.7vw">@p.DataRealizacao.ToString("dd-MM-yyyy") Ás @p.HoraRealizacao.ToString("hh\\:mm")</h6>
-                    <p class="card-text" style="font-size: 0.9vw">@p.Localidade.NomeLocalidade</p>
-                    <p></p>
-                    <p class="card-subtitle mb-2 text-muted" style="font-size: 1vw">Categoria: @p.TipoEventos.NomeTipoEventos</p>
-                    <h5 class="card-title" style="font-size: 0.8vw">Até @p.Lotacao pessoas</h5>
-                    <div>
+                <div class="cardeventos">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: 1.5vw">@p.NomeEventos</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.7vw">@p.DataRealizacao.ToString("dd-MM-yyyy") Ás @p.HoraRealizacao.ToString("hh\\:mm")</h6>
+                        <p class="card-text" style="font-size: 0.9vw">@p.Localidade.NomeLocalidade</p>
                         <p></p>
-                        <a asp-action="Details" asp-route-id="@p.EventosId"><buton style="font-size: 0.8vw">Ver</buton></a> 
-                        <p></p>
-                @if (User.IsInRole("admin"))
-                {
-                        <a asp-action="Edit" asp-route-id="@p.EventosId">Editar 
-                        </a>
-                        <a asp-action = "Delete" asp-route-id = "@p.EventosId" > Eliminar 
-                        </a>
-                    
-                       }
-                else { }
+                        <p class="card-subtitle mb-2 text-muted" style="font-size: 1vw">Categoria: @p.TipoEventos.NomeTipoEventos</p>
+                        <h5 class="card-title" style="font-size: 0.8vw">Até @p.Lotacao pessoas</h5>
+                        <div>
+                            <p></p>
+                            <a asp-action="Details" asp-route-id="@p.EventosId"><buton style="font-size: 0.8vw">Ver</buton></a>
+                            <p></p>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@p.EventosId">
+                                    Editar
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@p.EventosId">
+                                    Eliminar
+                                </a>
+
+                            }
+                            else { }
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
 
-    <div>
-        <nav class="mt-4">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">Primeira</a></li>
+        <div>
+            <nav class="mt-4">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">Primeira</a></li>
 
-                @{
-                    int initalPage = Model.Pagination.CurrentPage - PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
-                    if (initalPage < 1) initalPage = 1;
+                    @{
+                        int initalPage = Model.Pagination.CurrentPage - PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                        if (initalPage < 1) initalPage = 1;
 
-                    int finalPage = Model.Pagination.CurrentPage + PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
-                    if (finalPage > Model.Pagination.TotalPages) finalPage = Model.Pagination.TotalPages;
-                }
-
-                @for (int p = initalPage; p <= finalPage; p++)
-                {
-                    if (p == Model.Pagination.CurrentPage)
-                    {
-                        <li class="page-item active"><a class="page-link" href="#">@p</a></li>
+                        int finalPage = Model.Pagination.CurrentPage + PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                        if (finalPage > Model.Pagination.TotalPages) finalPage = Model.Pagination.TotalPages;
                     }
-                    else
-                    {
-                        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-name="@Model.SearchName">@p</a></li>
-                    }
-                }
 
-                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages" asp-route-name="@Model.SearchName">Última</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+                    @for (int p = initalPage; p <= finalPage; p++)
+                    {
+                        if (p == Model.Pagination.CurrentPage)
+                        {
+                            <li class="page-item active"><a class="page-link" href="#">@p</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-name="@Model.SearchName">@p</a></li>
+                        }
+                    }
+
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages" asp-route-name="@Model.SearchName">Última</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 

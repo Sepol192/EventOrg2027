@@ -91,7 +91,7 @@ namespace EventOrg2027.Controllers
         }
 
 
-        // GET: Eventos   
+        // GET: Eventos
         public async Task<IActionResult> Index(string TipoEvento,string OrgEvento,string LocalEvento, string name = null, int page = 1)
         {
 
@@ -167,6 +167,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Eventos/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["LocalidadeId"] = new SelectList(_context.Localidade, "LocalidadeId", "NomeLocalidade");
@@ -178,6 +179,7 @@ namespace EventOrg2027.Controllers
         // POST: Eventos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EventosId,NomeEventos,Descricao,Lotacao,DataRealizacao,HoraRealizacao,LocalidadeId,TipoEventosId,OrganizadorId")] Eventos eventos)
@@ -196,6 +198,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Eventos/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -221,6 +224,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("EventosId,NomeEventos,Descricao,Lotacao,DataRealizacao,HoraRealizacao,LocalidadeId,TipoEventosId,OrganizadorId")] Eventos eventos)
         {
             if (id != eventos.EventosId)
@@ -259,6 +263,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Eventos/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -281,6 +286,7 @@ namespace EventOrg2027.Controllers
         }
 
         // POST: Eventos/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

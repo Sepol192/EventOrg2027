@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EventOrg2027.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EventOrg2027.Controllers
 {
@@ -19,6 +20,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors
+        [Authorize(Roles = "Admin")]
         public IActionResult Index(string name = null, int page = 1)
         {
             var pagination = new PagingInfo
@@ -44,6 +46,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -63,6 +66,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -73,6 +77,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento,EmailAddress")] Organizador organizador)
         {
             if (ModelState.IsValid)
@@ -86,6 +91,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -107,6 +113,7 @@ namespace EventOrg2027.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("OrganizadorId,NomeOrganizador,Contacto,DataNascimento,EmailAddress")] Organizador organizador)
         {
             if (id != organizador.OrganizadorId)
@@ -142,6 +149,7 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -163,6 +171,7 @@ namespace EventOrg2027.Controllers
         // POST: Organizadors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var organizador = await _context.Organizador.FindAsync(id);
