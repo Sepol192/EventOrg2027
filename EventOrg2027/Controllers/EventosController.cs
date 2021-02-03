@@ -20,7 +20,7 @@ namespace EventOrg2027.Controllers
         {
             this._context = _context;
         }
-  
+         [Authorize(Roles = "Customer")]
         public IActionResult Reservas(string name = null,int page = 1)
         {
 
@@ -42,7 +42,29 @@ namespace EventOrg2027.Controllers
             );
         }
 
+        [Authorize(Roles = "Admin")]
+        public IActionResult Reservas2(string name = null, int page = 1)
+        {
 
+            var pagination = new PagingInfo
+            {
+                CurrentPage = page,
+                PageSize = PagingInfo.PAGE_SIZE_TABLE,
+                TotalItems = _context.Inscricao.Where(x => name == null || x.EventoNome.Contains(name)).Count()
+            };
+            return View(
+            new InscricaoListViewModel
+            {
+                inscricaos = _context.Inscricao.Where(x => name == null || x.EventoNome.Contains(name))
+                    .OrderByDescending(p => p.DataInscricao)
+                    .Skip((page - 1) * pagination.PageSize)
+                    .Take(pagination.PageSize),
+                Pagination = pagination
+            }
+            );
+        }
+
+        [Authorize(Roles = "Customer")]
         public IActionResult Reserva(int id) {
 
             var evento = _context.Eventos.Where(m => m.EventosId == id).FirstOrDefault();
