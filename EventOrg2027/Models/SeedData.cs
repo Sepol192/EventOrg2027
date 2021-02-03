@@ -87,20 +87,25 @@ namespace EventOrg2027.Models
                 new Localidade
                 {
                     NomeLocalidade = "Guarda",
-                    Descricao = "jijoj",
-                    Populacao = 122
+                    Descricao = "A Guarda é uma cidade portuguesa. Com 1 056 metros de altitude máxima, é a mais alta cidade do país. " +
+                    "Com 42 541 habitantes no seu perímetro urbano, capital do distrito da Guarda, situada na região estatística do " +
+                    "Centro e sub-região das Beiras e Serra da Estrela.",
+                    Populacao = 42541
                 },
                 new Localidade
                 {
                     NomeLocalidade = "Celorico",
-                    Descricao = "jijoj",
-                    Populacao = 122
+                    Descricao = "Celorico da Beira é uma vila portuguesa do Distrito da Guarda, Capital do Queijo da Serra, " +
+                    "na província da Beira Alta, região do Centro (Região das Beiras) e sub-região das Beiras e Serra da Estrela, " +
+                    "com cerca de 7 693 habitantes.",
+                    Populacao = 7693
                 },
                 new Localidade
                 {
                     NomeLocalidade = "Seia",
-                    Descricao = "jijoj",
-                    Populacao = 122
+                    Descricao = "Seia é uma cidade portuguesa do distrito da Guarda, situada na província da Beira Alta, " +
+                    "região do Centro (Região das Beiras) e sub-região da Serra da Estrela, com cerca de 24 702 habitantes.",
+                    Populacao = 24702
                 }
                 );
                 dbContext.SaveChanges();
@@ -114,7 +119,7 @@ namespace EventOrg2027.Models
                 dbContext.Organizador.AddRange(
                 new Organizador
                 {
-                    NomeOrganizador = "Fanc",
+                    NomeOrganizador = "Fnac",
                     Contacto = "966786786",
                     DataNascimento = new DateTime(2020, 11, 1),
                     EmailAddress = "fnac@gmail.com"
@@ -157,7 +162,7 @@ namespace EventOrg2027.Models
                  },
                  new TipoEventos
                  {
-                 NomeTipoEventos = "Concerto"
+                 NomeTipoEventos = "Teatro"
                  },
                  new TipoEventos
                  {
@@ -173,11 +178,11 @@ namespace EventOrg2027.Models
             int LocalidadeId2 = (from d in dbContext.Localidade where d.NomeLocalidade == "Seia" select d.LocalidadeId).First();
             int LocalidadeId3 = (from d in dbContext.Localidade where d.NomeLocalidade == "Celorico" select d.LocalidadeId).First(); 
 
-            int OrganizadorId = (from d in dbContext.Organizador where d.NomeOrganizador == "Fanc" select d.OrganizadorId).First(); 
+            int OrganizadorId = (from d in dbContext.Organizador where d.NomeOrganizador == "Fnac" select d.OrganizadorId).First(); 
             int OrganizadorId2 = (from d in dbContext.Organizador where d.NomeOrganizador == "Worten" select d.OrganizadorId).First();
             int OrganizadorId3 = (from d in dbContext.Organizador where d.NomeOrganizador == "Eventos Online" select d.OrganizadorId).First();
 
-            int TipoEventosId = (from d in dbContext.TiposEventos where d.NomeTipoEventos == "Concerto" select d.TipoEventosId).First();
+            int TipoEventosId = (from d in dbContext.TiposEventos where d.NomeTipoEventos == "Teatro" select d.TipoEventosId).First();
             int TipoEventosId2 = (from d in dbContext.TiposEventos where d.NomeTipoEventos == "Música" select d.TipoEventosId).First();
             int TipoEventosId3 = (from d in dbContext.TiposEventos where d.NomeTipoEventos == "Arte" select d.TipoEventosId).First();
 

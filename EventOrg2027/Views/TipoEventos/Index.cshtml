@@ -19,19 +19,31 @@
             <a class="button button2" asp-action="Index"><i class="fas fa-chevron-left"></i></a>
         </p>
     </form>
-    <div class="cardeventos-body">
-        @foreach (var p in Model.TipoEventos)
-
-        {
-            <div class="cardeventos ">
-                <div class="card-body">
-                    <h5 class="card-title" style="font-size: 1.5vw">@p.NomeTipoEventos</h5>
-                    <a asp-action="Edit" asp-route-id="@p.TipoEventosId">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@p.TipoEventosId">Detalhes</a> |
-                    <a asp-action="Delete" asp-route-id="@p.TipoEventosId">Apagar</a>
-                </div>
-            </div>}
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nome do Tipo de Evento
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.TipoEventos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => p.NomeTipoEventos)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@p.TipoEventosId">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@p.TipoEventosId">Detalhes</a> |
+                        <a asp-action="Delete" asp-route-id="@p.TipoEventosId">Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 
     <nav class="mt-3">

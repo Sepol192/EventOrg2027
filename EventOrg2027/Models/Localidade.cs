@@ -16,7 +16,6 @@ namespace EventOrg2027.Models
         public string NomeLocalidade { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza a Descrição")]
-        [StringLength(200, ErrorMessage = "A descrição é muito extensa")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Por favor, introduza a População")]
