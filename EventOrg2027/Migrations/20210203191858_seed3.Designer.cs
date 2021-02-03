@@ -4,14 +4,16 @@ using EventOrg2027.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventOrg2027.Migrations
 {
     [DbContext(typeof(EventOrgDbContext))]
-    partial class EventOrgDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210203191858_seed3")]
+    partial class seed3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
