@@ -376,3 +376,4 @@ C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Ra
 C:\Users\afons\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Reservas.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Reservas.cshtml.g.cs
 C:\Users\Marcelo Lopes\source\repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\EventOrg2027.csprojAssemblyReference.cache
+C:\Users\afons\Source\Repos\EventOrg2027\EventOrg2027\obj\Debug\netcoreapp3.0\Razor\Views\Eventos\Reservas2.cshtml.g.cs

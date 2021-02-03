@@ -34,8 +34,8 @@
                                 <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="TipoEventos" asp-action="Index">Tipos de Eventos</a></li>
                                 <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Localidades" asp-action="Index">Localidades</a></li>
                                 <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Organizadors" asp-action="Index">Organizadores</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Eventos" asp-action="Reservas2">Reservas Clientes</a></li>
                             }
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-action="Sobre" asp-controller="Home">Sobre</a></li>
                             @if (User.IsInRole("Customer"))
                             {
                                 <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Eventos" asp-action="Reservas">Minhas Reservas</a></li>
@@ -51,13 +51,13 @@
         <div>
             <main role="main" class="pb-3">
                 @RenderBody()
-            </main>
+            </main> 
         </div>
 
     <footer class="border-bottom footer text-muted">
-        <div class="container" style="text-align:center">
+        <div class="container" style="text-align:center"> 
             &copy; EventOrg2027 - <a asp-area="" asp-controller="Home" asp-action="Index">Home -</a>
-                                  <a asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy</a>
+                                  <a asp-area="" asp-controller="Home" asp-action="Sobre"> Sobre</a>
         </div>
     </footer>
 

@@ -6,7 +6,7 @@
 
 <h1>Details</h1>
 
-<h3>.</h3>
+<h3></h3>
 <div>
     <h3>Tipos de Eventos</h3>
     <hr />
@@ -18,10 +18,13 @@
             @Html.DisplayFor(model => model.NomeTipoEventos)
         </dd>
         <div class="form-group">
-            <a asp-action="Edit" asp-route-id="@Model.TipoEventosId" class="btn btn-primary">Editar</a>
-            <p></p>
-            <p><a asp-action="Index" class="btn btn-dark">Voltar</a></p>
-        </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.TipoEventosId" class="btn btn-primary">Editar</a>
+                <p></p>
+                <p><a asp-action="Index" class="btn btn-dark">Voltar</a></p>
+            }
+            </div>
     </dl>
 </div>
 

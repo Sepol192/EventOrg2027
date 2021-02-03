@@ -18,8 +18,9 @@ namespace EventOrg2027.Models
         {
             
             PopulateLocalidade(dbContext);
-            PopulateOrganizador(dbContext);
+            
             PopulateTiposEventos(dbContext);
+            PopulateOrganizador(dbContext);
             PopulateEvents(dbContext);
             SeedDevData(dbContext);
 

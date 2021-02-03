@@ -37,10 +37,14 @@
             @Html.DisplayFor(model => model.EmailAddress)
         </dd>
         <div>
-            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.OrganizadorId">Editar</a> 
-            <p></p>
-            <p><a asp-action="Index" class="btn btn-dark">Voltar para a lista</a></p>
-        </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.OrganizadorId">Editar</a>
+
+                <p></p>
+                <p><a asp-action="Index" class="btn btn-dark">Voltar para a lista</a></p>
+            }
+            </div>
     </dl>
 
 

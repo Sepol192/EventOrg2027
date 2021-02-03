@@ -30,10 +30,13 @@
             @Html.DisplayFor(model => model.Populacao)
         </dd>
         <div class="form-group">
-            <a asp-action="Edit" asp-route-id="@Model.LocalidadeId" class="btn btn-primary">Editar</a>
-            <p></p>
-            <p><a asp-action="Index" class="btn btn-dark">Voltar</a></p>
-        </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.LocalidadeId" class="btn btn-primary">Editar</a>
+                <p></p>
+                <p><a asp-action="Index" class="btn btn-dark">Voltar</a></p>
+            }
+            </div>
     </dl>
     
 </div>
