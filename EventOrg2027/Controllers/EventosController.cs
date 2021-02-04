@@ -201,9 +201,10 @@ namespace EventOrg2027.Controllers
         // POST: Eventos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("EventosId,NomeEventos,Descricao,Lotacao,DataRealizacao,HoraRealizacao,LocalidadeId,TipoEventosId,OrganizadorId")] Eventos eventos)
         {
             if (ModelState.IsValid)
@@ -308,9 +309,10 @@ namespace EventOrg2027.Controllers
         }
 
         // POST: Eventos/Delete/5
-        [Authorize(Roles = "Admin")]
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var eventos = await _context.Eventos.FindAsync(id);

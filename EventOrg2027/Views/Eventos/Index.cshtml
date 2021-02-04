@@ -52,20 +52,22 @@
                         <h5 class="card-title" style="font-size: 0.8vw">Até @p.Lotacao pessoas</h5>
                         <div>
                             <p></p>
+
                             <a asp-action="Details" asp-route-id="@p.EventosId"><buton style="font-size: 0.8vw">Ver</buton></a>
-                            <p></p>
-                            @if (User.IsInRole("admin"))
+
+                            @if (User.IsInRole("Admin"))
                             {
+                                
+                                <p></p>
                                 <a asp-action="Edit" asp-route-id="@p.EventosId">
                                     Editar
                                 </a>
                                 <a asp-action="Delete" asp-route-id="@p.EventosId">
                                     Eliminar
                                 </a>
-
                             }
-                            else { }
-                        </div>
+
+                            </div>
                     </div>
                 </div>
             }

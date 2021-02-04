@@ -65,6 +65,8 @@ namespace EventOrg2027.Controllers
         }
 
         // GET: Organizadors/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
