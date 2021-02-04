@@ -52,15 +52,11 @@
                 <th>
                     @Html.DisplayFor(model => item.EmailAddress)
                 </th>
-                @if (User.IsInRole("admin"))
-                {
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.OrganizadorId">Editar</a> |
                         <a asp-action="Details" asp-route-id="@item.OrganizadorId">Detalhes</a> |
                         <a asp-action="Delete" asp-route-id="@item.OrganizadorId">Apagar</a>
                     </td>
-                }
-                else { }
                 </tr>
             }
         </tbody>
